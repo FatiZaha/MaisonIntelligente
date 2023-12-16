@@ -7,6 +7,8 @@ import javax.swing.*;
 
 public class InterfaceConnexion extends JFrame {
 
+    JTextField loginField;
+    JPasswordField passwordField;
 
     public void Header(JPanel header, GridBagConstraints c){
 
@@ -27,7 +29,7 @@ public class InterfaceConnexion extends JFrame {
         JLabel logo = new JLabel(scaledImg);
         header.add(logo);
         JLabel pagename= new JLabel("Se Connecter");
-        pagename.setFont(new Font("Arial", Font.BOLD, 30));
+        pagename.setFont(new Font("Arial", Font.BOLD, 25));
         pagename.setBorder(new EmptyBorder(0, 50, 0, 0));
         header.add(pagename);
 
@@ -36,13 +38,34 @@ public class InterfaceConnexion extends JFrame {
     }
     public void Content(JPanel content, GridBagConstraints c){
 
-        c.weighty = 0.6;
+        c.weighty = 0.1;
         c.gridy = 1;
         getContentPane().add(content,c);
+
+        GridLayout gridLayout = new GridLayout(2, 2);
+        //gridLayout.setHgap(10); // Set horizontal gap (margin)
+        gridLayout.setVgap(30); // Set vertical gap (margin)
+
+        content.setLayout(gridLayout);
+        content.setBorder(new EmptyBorder(50, 100, 50, 100));
+
+        JLabel loginLabel= new JLabel("Login");
+        loginLabel.setFont(new Font("Arial", Font.BOLD, 20));
+        content.add(loginLabel);
+        loginField = new JTextField();
+        loginField.setFont(new Font("Arial",Font.PLAIN, 20));
+        content.add(loginField);
+
+        JLabel pwdLabel = new JLabel("Mot de passe");
+        pwdLabel.setFont(new Font("Arial", Font.BOLD, 20));
+        content.add(pwdLabel);
+        passwordField = new JPasswordField();
+        passwordField.setFont(new Font("Arial", Font.BOLD, 20));
+        content.add(passwordField);
     }
     public void Footer(JPanel footer, GridBagConstraints c){
         footer.setBackground(Color.GRAY);
-        c.weighty = 0.2;
+        c.weighty = 0.3;
         c.gridy = 2;
         getContentPane().add(footer,c);
     }
@@ -60,7 +83,7 @@ public class InterfaceConnexion extends JFrame {
         this.Header(header,c);
         this.Content(content,c);
         this.Footer(footer,c);
-        pack();
+        //pack();
         validate();
 
     }
@@ -68,7 +91,8 @@ public class InterfaceConnexion extends JFrame {
         setTitle(title);
         this.Window();
         setVisible(true);
-        setSize(500, 500);
+        setSize(600, 400);
+        setResizable(false);
         setLocationRelativeTo(null);
     }
 }
