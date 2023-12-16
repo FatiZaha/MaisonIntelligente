@@ -1,6 +1,6 @@
 package metier;
 import java.util.*;
-import pk.LesExceptions.ConnexionException;
+import metier.LesExceptions.ConnexionException;
 
 public class LesClients{
 
