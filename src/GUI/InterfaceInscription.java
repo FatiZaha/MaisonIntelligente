@@ -11,13 +11,15 @@ public class InterfaceInscription extends JFrame {
     JTextField emailField;
     JTextField adresseField;
     JTextField loginField;
-    JTextField passwordField;
-
+    JPasswordField passwordField;
+    JPasswordField chpasswordField;
+    JButton creerBtn;
+    JButton AnnulerBtn;
         public void Header(JPanel header, GridBagConstraints c) {
 
             c.fill = GridBagConstraints.BOTH;
-            c.weightx = 1;
-            c.weighty = 0.2;
+            c.weightx = 0.05;
+            c.weighty = 0.002;
             c.gridy = 0;
             String imagePath = "..\\MaisonIntelligente\\src\\GUI\\images\\logo2.png";
             int desiredWidth = 151;
@@ -43,14 +45,14 @@ public class InterfaceInscription extends JFrame {
         }
         public void Content(JPanel content, GridBagConstraints c) {
 
-            c.weighty = 0.6;
+            c.weighty = 2;
             c.gridy = 1;
-            int hgap=20;
+            int hgap=0;
             int vgap=10;
             getContentPane().add(content, c);
 
-            content.setLayout(new GridLayout(7, 2,hgap,vgap));
-            content.setBorder(new EmptyBorder(0, 100, 0, 100));
+            content.setLayout(new GridLayout(8, 2,hgap,vgap));
+            content.setBorder(new EmptyBorder(5, 100, 5, 100));
 
             JLabel nomLabel= new JLabel("Nom");
             nomLabel.setFont(new Font("Arial", Font.BOLD, 20));
@@ -97,17 +99,41 @@ public class InterfaceInscription extends JFrame {
             JLabel passwordLabel= new JLabel("Password");
             passwordLabel.setFont(new Font("Arial", Font.BOLD, 20));
             content.add(passwordLabel);
-            passwordField = new JTextField();
-            passwordField.setFont(new Font("Arial",Font.PLAIN, 20));
+            passwordField = new JPasswordField();
+            passwordField.setFont(new Font("Arial",Font.BOLD, 20));
             content.add(passwordField);
+
+          JLabel checkpasswordLabel= new JLabel("Check password");
+            checkpasswordLabel.setFont(new Font("Arial", Font.BOLD, 20));
+            content.add(checkpasswordLabel);
+            chpasswordField = new JPasswordField();
+            chpasswordField.setFont(new Font("Arial",Font.BOLD, 20));
+            content.add(chpasswordField);
 
         }
         public void Footer(JPanel footer, GridBagConstraints c) {
 
-            footer.setBackground(Color.GRAY);
-            c.weighty = 0.2;
+            //footer.setBackground(Color.GRAY);
+
+            c.weighty = 0.1;
             c.gridy = 2;
-            getContentPane().add(footer, c);
+
+            getContentPane().add(footer,c);
+            footer.setLayout(new FlowLayout());
+
+            footer.setBorder(new EmptyBorder(0, 0, 0, -200));
+
+
+            AnnulerBtn = new JButton("Annuler");
+            AnnulerBtn.setFont(new Font("Arial", Font.BOLD, 20));
+            AnnulerBtn.setBackground(Color.decode("#7FC951"));
+            footer.add(AnnulerBtn);
+
+            creerBtn = new JButton("Créer");
+            creerBtn.setFont(new Font("Arial", Font.BOLD, 20));
+            creerBtn.setBackground(Color.decode("#7FC951"));
+
+            footer.add(creerBtn);
         }
 
             public void Window(){
@@ -123,14 +149,12 @@ public class InterfaceInscription extends JFrame {
                 this.Header(header,c);
                 this.Content(content,c);
                 this.Footer(footer,c);
-                pack();
+                //pack();
                 validate();
             }
 
             public InterfaceInscription(String title) {
                 setTitle(title);
-
-
                 this.Window();
                 setVisible(true);
                 setExtendedState(JFrame.MAXIMIZED_BOTH);
