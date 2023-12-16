@@ -5,36 +5,23 @@ import javax.swing.*;
 
     public class InterfaceInscription extends JFrame {
 
-        public InterfaceInscription() {
-            GridBagLayout grid = new GridBagLayout();
-            setLayout(grid);
+        public void Header(JPanel header, GridBagConstraints c) {
 
-            JPanel header;
-            JPanel content;
-            JPanel footer;
-
-            GridBagConstraints c = new GridBagConstraints();
             c.fill = GridBagConstraints.BOTH;
             c.weightx = 1;
             c.weighty = 0.2;
             c.gridy = 0;
 
-            header = new JPanel();
             header.setBackground(Color.ORANGE);
-            getContentPane().add(header,c);
+            getContentPane().add(header, c);
+        }
+        public void Content(JPanel content, GridBagConstraints c) {
 
-            content = new JPanel();
             c.weighty = 0.6;
             c.gridy = 1;
-            getContentPane().add(content,c);
+            getContentPane().add(content, c);
 
-            footer = new JPanel();
-            footer.setBackground(Color.GRAY);
-            c.weighty = 0.2;
-            c.gridy = 2;
-            getContentPane().add(footer,c);
 
-            // Ajout des éléments à l'interface d'inscription
             content.setLayout(new GridLayout(7, 2));
 
             content.add(new JLabel("Nom:"));
@@ -65,12 +52,40 @@ import javax.swing.*;
             JPasswordField passwordField = new JPasswordField();
             content.add(passwordField);
 
-            pack();
-            validate();
+        }
+        public void Footer(JPanel footer, GridBagConstraints c) {
 
-            setTitle("Maison Intelligente");
-            setVisible(true);
-            setSize(500, 500);
-            setLocationRelativeTo(null);
+            footer.setBackground(Color.GRAY);
+            c.weighty = 0.2;
+            c.gridy = 2;
+            getContentPane().add(footer, c);
         }
-        }
+
+            public void Window(){
+
+                GridBagLayout grid = new GridBagLayout();
+                setLayout(grid);
+
+                JPanel header= new JPanel();;
+                JPanel content= new JPanel();
+                JPanel footer= new JPanel();
+
+                GridBagConstraints c = new GridBagConstraints();
+                this.Header(header,c);
+                this.Content(content,c);
+                this.Footer(footer,c);
+                pack();
+                validate();
+            }
+
+            public InterfaceInscription(String title) {
+                setTitle(title);
+
+
+                this.Window();
+                setVisible(true);
+                setSize(500, 500);
+                setLocationRelativeTo(null);
+            }
+            }
+
