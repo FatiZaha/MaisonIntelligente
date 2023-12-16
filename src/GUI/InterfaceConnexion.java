@@ -13,7 +13,7 @@ public class InterfaceConnexion extends JFrame {
         c.weightx = 0.05;
         c.weighty = 0.002;
         c.gridy = 0;
-        String imagePath = "D:\\Program Files\\JAVA\\eclipse\\MaisonIntelligente\\src\\GUI\\images\\logo2.png";
+        String imagePath = "..\\MaisonIntelligente\\src\\GUI\\images\\logo2.png";
         int desiredWidth = 150;
         int desiredHeight = 70;
 
