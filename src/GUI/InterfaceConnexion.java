@@ -1,7 +1,6 @@
 package GUI;
 
 import java.awt.*;
-import java.nio.file.Path;
 import javax.swing.border.EmptyBorder;
 import javax.swing.*;
 
@@ -9,6 +8,8 @@ public class InterfaceConnexion extends JFrame {
 
     JTextField loginField;
     JPasswordField passwordField;
+    JButton connectBtn;
+    JButton inscptionBtn;
 
     public void Header(JPanel header, GridBagConstraints c){
 
@@ -16,8 +17,8 @@ public class InterfaceConnexion extends JFrame {
         c.weighty = 0.002;
         c.gridy = 0;
         String imagePath = "..\\MaisonIntelligente\\src\\GUI\\images\\logo2.png";
-        int desiredWidth = 150;
-        int desiredHeight = 70;
+        int desiredWidth = 78;
+        int desiredHeight = 34;
 
 
         ImageIcon img = new ImageIcon(imagePath);
@@ -26,6 +27,7 @@ public class InterfaceConnexion extends JFrame {
 
         FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
         header.setLayout(flowLayout);
+        header.setBorder(new EmptyBorder(5, 0, 5, 0));
         JLabel logo = new JLabel(scaledImg);
         header.add(logo);
         JLabel pagename= new JLabel("Se Connecter");
@@ -33,7 +35,7 @@ public class InterfaceConnexion extends JFrame {
         pagename.setBorder(new EmptyBorder(0, 50, 0, 0));
         header.add(pagename);
 
-        header.setBackground(Color.ORANGE);
+        header.setBackground(Color.decode("#EFFA76"));
         getContentPane().add(header,c);
     }
     public void Content(JPanel content, GridBagConstraints c){
@@ -64,10 +66,26 @@ public class InterfaceConnexion extends JFrame {
         content.add(passwordField);
     }
     public void Footer(JPanel footer, GridBagConstraints c){
-        footer.setBackground(Color.GRAY);
-        c.weighty = 0.3;
+        //footer.setBackground(Color.GRAY);
+
+        c.weighty = 0.1;
         c.gridy = 2;
         getContentPane().add(footer,c);
+        footer.setLayout(new FlowLayout());
+
+        footer.setBorder(new EmptyBorder(0, 0, 0, -200));
+
+        inscptionBtn = new JButton("Inscription");
+        inscptionBtn.setFont(new Font("Arial", Font.BOLD, 20));
+        inscptionBtn.setBackground(Color.decode("#7FC951"));
+        footer.add(inscptionBtn);
+
+        connectBtn = new JButton("Connexion");
+        connectBtn.setFont(new Font("Arial", Font.BOLD, 20));
+        connectBtn.setBackground(Color.decode("#7FC951"));
+
+        footer.add(connectBtn);
+
     }
 
     public void Window(){
