@@ -1,4 +1,6 @@
 package GUI;
 
-public class InterfaceInscription {
+import javax.swing.*;
+
+public class InterfaceInscription extends JFrame {
 }
