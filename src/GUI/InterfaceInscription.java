@@ -5,6 +5,13 @@ import javax.swing.border.EmptyBorder;
 
 
 public class InterfaceInscription extends JFrame {
+    JTextField nomField;
+    JTextField prenomField;
+    JTextField telField;
+    JTextField emailField;
+    JTextField adresseField;
+    JTextField loginField;
+    JTextField passwordField;
 
         public void Header(JPanel header, GridBagConstraints c) {
 
@@ -12,46 +19,86 @@ public class InterfaceInscription extends JFrame {
             c.weightx = 1;
             c.weighty = 0.2;
             c.gridy = 0;
+            String imagePath = "..\\MaisonIntelligente\\src\\GUI\\images\\logo2.png";
+            int desiredWidth = 151;
+            int desiredHeight = 65;
 
-            header.setBackground(Color.ORANGE);
-            getContentPane().add(header, c);
+
+            ImageIcon img = new ImageIcon(imagePath);
+            Image image = img.getImage().getScaledInstance(desiredWidth, desiredHeight, Image.SCALE_SMOOTH);
+            ImageIcon scaledImg = new ImageIcon(image);
+
+            FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
+            header.setLayout(flowLayout);
+            header.setBorder(new EmptyBorder(5, 0, 5, 0));
+            JLabel logo = new JLabel(scaledImg);
+            header.add(logo);
+            JLabel pagename= new JLabel("S'inscrire");
+            pagename.setFont(new Font("Arial", Font.BOLD, 25));
+            pagename.setBorder(new EmptyBorder(0, 50, 0, 0));
+            header.add(pagename);
+
+            header.setBackground(Color.decode("#EFFA76"));
+            getContentPane().add(header,c);
         }
         public void Content(JPanel content, GridBagConstraints c) {
 
             c.weighty = 0.6;
             c.gridy = 1;
+            int hgap=20;
+            int vgap=10;
             getContentPane().add(content, c);
 
-
-            content.setLayout(new GridLayout(7, 2));
+            content.setLayout(new GridLayout(7, 2,hgap,vgap));
             content.setBorder(new EmptyBorder(0, 100, 0, 100));
 
-            content.add(new JLabel("Nom:"));
-            JTextField nomField = new JTextField();
+            JLabel nomLabel= new JLabel("Nom");
+            nomLabel.setFont(new Font("Arial", Font.BOLD, 20));
+            content.add(nomLabel);
+            nomField = new JTextField();
+            nomField.setFont(new Font("Arial",Font.PLAIN, 20));
             content.add(nomField);
 
-            content.add(new JLabel("Prénom:"));
-            JTextField prenomField = new JTextField();
+            JLabel prenomLabel= new JLabel("Prénom");
+            prenomLabel.setFont(new Font("Arial", Font.BOLD, 20));
+            content.add(prenomLabel);
+            prenomField = new JTextField();
+            prenomField.setFont(new Font("Arial",Font.PLAIN, 20));
             content.add(prenomField);
 
-            content.add(new JLabel("Téléphone:"));
-            JTextField telephoneField = new JTextField();
-            content.add(telephoneField);
+            JLabel telLabel= new JLabel("Téléphone");
+            telLabel.setFont(new Font("Arial", Font.BOLD, 20));
+            content.add(telLabel);
+            telField = new JTextField();
+            telField.setFont(new Font("Arial",Font.PLAIN, 20));
+            content.add(telField);
 
-            content.add(new JLabel("Email:"));
-            JTextField emailField = new JTextField();
+            JLabel emailLabel= new JLabel("Email");
+            emailLabel.setFont(new Font("Arial", Font.BOLD, 20));
+            content.add(emailLabel);
+            emailField = new JTextField();
+            emailField.setFont(new Font("Arial",Font.PLAIN, 20));
             content.add(emailField);
 
-            content.add(new JLabel("Adresse:"));
-            JTextField adresseField = new JTextField();
+            JLabel adresseLabel= new JLabel("Adresse");
+            adresseLabel.setFont(new Font("Arial", Font.BOLD, 20));
+            content.add(adresseLabel);
+            adresseField = new JTextField();
+            adresseField.setFont(new Font("Arial",Font.PLAIN, 20));
             content.add(adresseField);
 
-            content.add(new JLabel("Login:"));
-            JTextField loginField = new JTextField();
+            JLabel loginLabel= new JLabel("Login");
+            loginLabel.setFont(new Font("Arial", Font.BOLD, 20));
+            content.add(loginLabel);
+            loginField = new JTextField();
+            loginField.setFont(new Font("Arial",Font.PLAIN, 20));
             content.add(loginField);
 
-            content.add(new JLabel("Mot de passe:"));
-            JPasswordField passwordField = new JPasswordField();
+            JLabel passwordLabel= new JLabel("Password");
+            passwordLabel.setFont(new Font("Arial", Font.BOLD, 20));
+            content.add(passwordLabel);
+            passwordField = new JTextField();
+            passwordField.setFont(new Font("Arial",Font.PLAIN, 20));
             content.add(passwordField);
 
         }
@@ -86,7 +133,8 @@ public class InterfaceInscription extends JFrame {
 
                 this.Window();
                 setVisible(true);
-                setSize(500, 500);
+                setExtendedState(JFrame.MAXIMIZED_BOTH);
+                setResizable(false);
                 setLocationRelativeTo(null);
             }
             }
