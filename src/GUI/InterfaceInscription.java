@@ -36,13 +36,11 @@ public class InterfaceInscription extends JFrame {
         pack();
         validate();
 
-        setTitle(&amp;quot;GridBagLayout exemple&amp;quot;);
+        setTitle("Inscription");
         setVisible(true);
         setSize(500, 500);
         setLocationRelativeTo(null);
     }
 
-    public static void main(String[] args) {
-        new InterfaceInscription();
-    }
-}}
+
+}
