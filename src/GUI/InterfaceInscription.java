@@ -1,9 +1,10 @@
 package GUI;
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 
-    public class InterfaceInscription extends JFrame {
+public class InterfaceInscription extends JFrame {
 
         public void Header(JPanel header, GridBagConstraints c) {
 
@@ -23,6 +24,7 @@ import javax.swing.*;
 
 
             content.setLayout(new GridLayout(7, 2));
+            content.setBorder(new EmptyBorder(0, 100, 0, 100));
 
             content.add(new JLabel("Nom:"));
             JTextField nomField = new JTextField();
