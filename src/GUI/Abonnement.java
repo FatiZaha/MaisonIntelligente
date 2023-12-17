@@ -4,6 +4,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.*;
 
 public class Abonnement extends JFrame{
+    JTextField RIB;
     JTextField CodeCarteField;
     JTextField  Dateexpiration;
     JButton AnnulerBtn;
@@ -39,12 +40,26 @@ public class Abonnement extends JFrame{
         c.gridy = 1;
         getContentPane().add(content,c);
 
-        GridLayout gridLayout = new GridLayout(2, 2);
+        GridLayout gridLayout = new GridLayout(3, 2);
         //gridLayout.setHgap(10); /Hgap : margin entre colonnes // Set horizontal gap (margin)
         gridLayout.setVgap(30); //Vgap : margin entre lignes // Set vertical gap (margin)
 
         content.setLayout(gridLayout);
         content.setBorder(new EmptyBorder(50, 100, 50, 100));
+
+        JLabel RIBLabel= new JLabel("Code carte");
+        RIBLabel.setFont(new Font("Arial", Font.BOLD, 20));
+        content.add(RIBLabel);
+        RIB = new JTextField();
+        RIB.setFont(new Font("Arial",Font.PLAIN, 20));
+        content.add(RIB);
+
+        JLabel DateLabel = new JLabel("Date d'expiration");
+        DateLabel.setFont(new Font("Arial", Font.BOLD, 20));
+        content.add(DateLabel);
+        Dateexpiration = new JTextField();
+        Dateexpiration.setFont(new Font("Arial", Font.BOLD, 20));
+        content.add(Dateexpiration);
 
         JLabel CodeLabel= new JLabel("Code carte");
         CodeLabel.setFont(new Font("Arial", Font.BOLD, 20));
@@ -54,12 +69,7 @@ public class Abonnement extends JFrame{
         content.add(CodeCarteField);
 
 
-        JLabel DateLabel = new JLabel("Date d'expiration");
-        DateLabel.setFont(new Font("Arial", Font.BOLD, 20));
-        content.add(DateLabel);
-        Dateexpiration = new JTextField();
-        Dateexpiration.setFont(new Font("Arial", Font.BOLD, 20));
-        content.add(Dateexpiration);
+
     }
     public void Footer(JPanel footer, GridBagConstraints c){
         //footer.setBackground(Color.GRAY);
@@ -106,7 +116,7 @@ public class Abonnement extends JFrame{
 
         this.Window();
         setVisible(true);
-        setSize(600, 400);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setResizable(false);
         setLocationRelativeTo(null);
     }
