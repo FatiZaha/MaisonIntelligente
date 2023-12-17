@@ -45,7 +45,7 @@ public class InterfaceConnexion extends JFrame {
         c.gridy = 1;
         getContentPane().add(content,c);
 
-        content.setLayout(new GridLayout(2, 2,0,30));
+        content.setLayout(new GridLayout(2, 2,-700,70));
 
         // Create the nested panels with GridBagLayout for each column
         JPanel row1 = new JPanel(new BorderLayout());
@@ -95,7 +95,7 @@ public class InterfaceConnexion extends JFrame {
         getContentPane().add(footer,c);
         footer.setLayout(new FlowLayout(1, 50, FlowLayout.CENTER));
 
-        footer.setBorder(new EmptyBorder(0, 0, 0, -880));
+        footer.setBorder(new EmptyBorder(0, 0, 50, -880));
 
         inscptionBtn = new JButton("Inscription");
         inscptionBtn.setFont(new Font("Arial", Font.BOLD, 36));
@@ -120,7 +120,7 @@ public class InterfaceConnexion extends JFrame {
         GridBagLayout grid = new GridBagLayout();
         setLayout(grid);
 
-        JPanel header= new JPanel();;
+        JPanel header= new JPanel();
         JPanel content= new JPanel();
         JPanel footer= new JPanel();
         GridBagConstraints c = new GridBagConstraints();
