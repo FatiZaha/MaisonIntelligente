@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.*;
 
-public class InterfaceConnexion extends JFrame {
+public class InterConnexion extends JFrame {
 
     JTextField loginField;
     JPasswordField passwordField;
@@ -132,7 +132,7 @@ public class InterfaceConnexion extends JFrame {
         validate();
 
     }
-    public InterfaceConnexion(String title) {
+    public InterConnexion(String title) {
         setTitle(title);
         this.Window();
         setVisible(true);
