@@ -32,6 +32,7 @@ public class InterfaceConnexion extends JFrame {
         header.add(logo);
         JLabel pagename= new JLabel("Se Connecter");
         pagename.setFont(new Font("Arial", Font.BOLD, 36));
+        pagename.setForeground(Color.decode("#4A4A49"));
         pagename.setBorder(new EmptyBorder(0, 50, 0, 0));
         header.add(pagename);
 
@@ -104,10 +105,10 @@ public class InterfaceConnexion extends JFrame {
         connectBtn.setFont(new Font("Arial", Font.BOLD, 36));
         connectBtn.setBackground(Color.decode("#ABEAAB"));
 
-        int buttonGap = 10;
-        connectBtn.setBorder(new EmptyBorder(buttonGap, buttonGap, buttonGap, buttonGap));
+        //int buttonGap = 10;
+        connectBtn.setBorder(new EmptyBorder(2, 30, 2, 30));
 
-        inscptionBtn.setBorder(new EmptyBorder(buttonGap, buttonGap, buttonGap, buttonGap));
+        inscptionBtn.setBorder(new EmptyBorder(2, 30, 2, 30));
 
         footer.add(inscptionBtn);
         footer.add(connectBtn);
