@@ -11,7 +11,7 @@ public class InterConnexion extends JFrame {
     JButton connectBtn;
     JButton inscptionBtn;
 
-    public void Header(JPanel header, GridBagConstraints c){
+    /*public void Header(JPanel header, GridBagConstraints c){
 
         c.weightx = 0.05;
         c.weighty = 0.002;
@@ -38,7 +38,7 @@ public class InterConnexion extends JFrame {
 
         header.setBackground(Color.decode("#EFFA76"));
         getContentPane().add(header,c);
-    }
+    }*/
     public void Content(JPanel content, GridBagConstraints c){
 
         c.weighty = 0.1;
@@ -119,13 +119,15 @@ public class InterConnexion extends JFrame {
 
         GridBagLayout grid = new GridBagLayout();
         setLayout(grid);
-
-        JPanel header= new JPanel();
-        JPanel content= new JPanel();
-        JPanel footer= new JPanel();
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.BOTH;
-        this.Header(header,c);
+
+        JPanel header= InterHeader.createHeaderPanel("Se connecter",c);
+        getContentPane().add(header,c);
+        JPanel content= new JPanel();
+        JPanel footer= new JPanel();
+
+        //this.Header(header,c);
         this.Content(content,c);
         this.Footer(footer,c);
         //pack();
