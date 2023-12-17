@@ -47,7 +47,7 @@ public class Abonnement extends JFrame{
         content.setLayout(gridLayout);
         content.setBorder(new EmptyBorder(50, 100, 50, 100));
 
-        JLabel RIBLabel= new JLabel("Code carte");
+        JLabel RIBLabel= new JLabel("RIB");
         RIBLabel.setFont(new Font("Arial", Font.BOLD, 20));
         content.add(RIBLabel);
         RIB = new JTextField();
