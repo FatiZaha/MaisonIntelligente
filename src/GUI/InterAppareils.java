@@ -24,7 +24,6 @@ public class InterAppareils extends JFrame{
         validate();
     }
 
-
     public InterAppareils(String title) {
         setTitle(title);
         this.Window();

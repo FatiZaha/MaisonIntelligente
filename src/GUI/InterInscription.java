@@ -50,7 +50,6 @@ public class InterInscription extends JFrame {
             int hgap=-500;
             int vgap=20;
             getContentPane().add(content, c);
-
             content.setLayout(new GridLayout(8, 2,hgap,vgap));
             content.setBorder(new EmptyBorder(10, 100, 10, 100));
 
