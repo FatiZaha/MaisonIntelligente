@@ -31,7 +31,7 @@ public class InterfaceConnexion extends JFrame {
         JLabel logo = new JLabel(scaledImg);
         header.add(logo);
         JLabel pagename= new JLabel("Se Connecter");
-        pagename.setFont(new Font("Arial", Font.BOLD, 25));
+        pagename.setFont(new Font("Arial", Font.BOLD, 36));
         pagename.setBorder(new EmptyBorder(0, 50, 0, 0));
         header.add(pagename);
 
@@ -138,5 +138,9 @@ public class InterfaceConnexion extends JFrame {
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setResizable(false);
         setLocationRelativeTo(null);
+        String imagePath = "..\\MaisonIntelligente\\src\\GUI\\images\\logo2.png";
+        ImageIcon icon = new ImageIcon(imagePath);
+        setIconImage(icon.getImage());
     }
+
 }
