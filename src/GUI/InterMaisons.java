@@ -9,19 +9,22 @@ import java.awt.event.ActionListener;
 public class InterMaisons extends JFrame {
 
     private JTextField searchField;
+
     public void NavFilter(JPanel navFilter, GridBagConstraints c){
 
-        c.weighty = 0.01;
+        c.weighty = 0.002;
+        //c.weightx = 20;
         c.gridy = 1;
 
-        navFilter.setBorder(new EmptyBorder(40,500,60,500));
-        navFilter.setLayout(new BorderLayout());
-        navFilter.setPreferredSize(new Dimension(300, 80));
+        navFilter.setBorder(new EmptyBorder(40,0,0,-200));
+        navFilter.setLayout(new FlowLayout());
+        navFilter.setPreferredSize(new Dimension(1000, 80));
         //navFilter.setBackground(Color.LIGHT_GRAY);
 
         searchField = new JTextField();
         searchField.setFont(new Font("Arial",Font.PLAIN, 24));
-        searchField.setBorder(new EmptyBorder(1,1,1,1));
+        searchField.setBorder(new EmptyBorder(0,0,0,0));
+        searchField.setPreferredSize(new Dimension(1000, 35));
         JButton searchButton = new JButton();
 
         String imagePath = "..\\MaisonIntelligente\\src\\GUI\\images\\search_icon.png";
@@ -34,18 +37,58 @@ public class InterMaisons extends JFrame {
 
         searchButton.setIcon(searchIcon);
         searchButton.setContentAreaFilled(false);
-        searchButton.setBorder(new EmptyBorder(1,1,1,1));
+        searchButton.setBorder(new EmptyBorder(0,0,0,0));
 
-        navFilter.add(searchField, BorderLayout.CENTER);
-        navFilter.add(searchButton, BorderLayout.EAST);
+        JButton addHomeButton = new JButton();
+
+        String imagePath2 = "..\\MaisonIntelligente\\src\\GUI\\images\\add_home.png";
+        int desiredWidth2 = 32;
+        int desiredHeight2 = 32;
+
+        ImageIcon img2 = new ImageIcon(imagePath2);
+        Image image2 = img2.getImage().getScaledInstance(desiredWidth2, desiredHeight2, Image.SCALE_SMOOTH);
+        ImageIcon searchIcon2 = new ImageIcon(image2);
+
+        addHomeButton.setIcon(searchIcon2);
+        addHomeButton.setContentAreaFilled(false);
+        addHomeButton.setBorder(new EmptyBorder(0,170,0,0));
+
+        navFilter.add(searchField, FlowLayout.LEFT);
+        navFilter.add(searchButton, FlowLayout.CENTER);
+        navFilter.add(addHomeButton, FlowLayout.RIGHT);
         getContentPane().add(navFilter,c);
     }
 
     public void Content(JPanel content, GridBagConstraints c){
-        c.weighty = 0.1;
-        c.gridy = 2;
-        JLabel test= new JLabel("hhhhh");
-        getContentPane().add(content,c);
+
+            c.weighty = 0.1;
+            c.gridy = 2;
+
+            content.setLayout(new BorderLayout());
+            content.setBorder(new EmptyBorder(0, 200, 0, 200));
+
+            JPanel gridPanel = new JPanel(new GridLayout(0, 3, 50, 30)); // 3 columns, 10 pixels horizontal and vertical gap
+
+            // Create and add elements to the grid
+            for (int i = 1; i <= 18; i++) {
+                JButton button = new JButton("Button " + i);
+                gridPanel.add(button);
+                button.setPreferredSize(new Dimension(200, 250));
+            }
+
+
+        // Add the grigPanel area to a JScrollPane with a vertical scrollbar
+        JScrollPane scrollPane = new JScrollPane(gridPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+
+        // Create a vertical scrollbar
+        JScrollBar verticalScrollBar = scrollPane.getVerticalScrollBar();
+
+
+        scrollPane.setBorder(new EmptyBorder(50,0,20,10));
+        // Add components to the content panel
+        content.add(scrollPane, BorderLayout.CENTER);
+
+        getContentPane().add(content, c);
     }
     public void Window(){
         GridBagLayout grid = new GridBagLayout();
