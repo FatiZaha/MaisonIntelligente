@@ -4,7 +4,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 
-public class InterfaceInscription extends JFrame {
+public class InterInscription extends JFrame {
     JTextField nomField;
     JTextField prenomField;
     JTextField telField;
@@ -15,7 +15,7 @@ public class InterfaceInscription extends JFrame {
     JPasswordField chpasswordField;
     JButton creerBtn;
     JButton AnnulerBtn;
-        public void Header(JPanel header, GridBagConstraints c) {
+       /* public void Header(JPanel header, GridBagConstraints c) {
 
             c.fill = GridBagConstraints.BOTH;
             c.weightx = 0.05;
@@ -42,17 +42,17 @@ public class InterfaceInscription extends JFrame {
 
             header.setBackground(Color.decode("#EFFA76"));
             getContentPane().add(header,c);
-        }
+        }*/
         public void Content(JPanel content, GridBagConstraints c) {
 
             c.weighty = 2;
             c.gridy = 1;
-            int hgap=0;
-            int vgap=10;
+            int hgap=-500;
+            int vgap=20;
             getContentPane().add(content, c);
 
             content.setLayout(new GridLayout(8, 2,hgap,vgap));
-            content.setBorder(new EmptyBorder(5, 100, 5, 100));
+            content.setBorder(new EmptyBorder(10, 100, 10, 100));
 
             JLabel nomLabel= new JLabel("Nom");
             nomLabel.setFont(new Font("Arial", Font.BOLD, 20));
@@ -121,18 +121,23 @@ public class InterfaceInscription extends JFrame {
             getContentPane().add(footer,c);
             footer.setLayout(new FlowLayout());
 
-            footer.setBorder(new EmptyBorder(0, 0, 0, -200));
+            footer.setBorder(new EmptyBorder(0, 0, 0, -880));
 
 
             AnnulerBtn = new JButton("Annuler");
-            AnnulerBtn.setFont(new Font("Arial", Font.BOLD, 20));
-            AnnulerBtn.setBackground(Color.decode("#7FC951"));
-            footer.add(AnnulerBtn);
+            AnnulerBtn.setFont(new Font("Arial", Font.BOLD, 36));
+            AnnulerBtn.setBackground(Color.decode("#ABEAAB"));
+
 
             creerBtn = new JButton("Créer");
-            creerBtn.setFont(new Font("Arial", Font.BOLD, 20));
-            creerBtn.setBackground(Color.decode("#7FC951"));
+            creerBtn.setFont(new Font("Arial", Font.BOLD, 36));
+            creerBtn.setBackground(Color.decode("#ABEAAB"));
+            int buttonGap = 10;
+            creerBtn.setBorder(new EmptyBorder(buttonGap, buttonGap, buttonGap, buttonGap));
 
+            AnnulerBtn.setBorder(new EmptyBorder(buttonGap, buttonGap, buttonGap, buttonGap));
+
+            footer.add(AnnulerBtn);
             footer.add(creerBtn);
         }
 
@@ -141,25 +146,31 @@ public class InterfaceInscription extends JFrame {
                 GridBagLayout grid = new GridBagLayout();
                 setLayout(grid);
 
-                JPanel header= new JPanel();;
+                //JPanel header= new JPanel();;
                 JPanel content= new JPanel();
                 JPanel footer= new JPanel();
 
                 GridBagConstraints c = new GridBagConstraints();
-                this.Header(header,c);
+                c.fill =GridBagConstraints.BOTH;
+                JPanel header= InterHeader.createHeaderPanel("S'inscrire",c);
+                getContentPane().add(header,c);
+                //this.Header(header,c);
                 this.Content(content,c);
                 this.Footer(footer,c);
                 //pack();
                 validate();
             }
 
-            public InterfaceInscription(String title) {
+            public InterInscription(String title) {
                 setTitle(title);
                 this.Window();
                 setVisible(true);
                 setExtendedState(JFrame.MAXIMIZED_BOTH);
                 setResizable(false);
                 setLocationRelativeTo(null);
+                String imagePath = "..\\MaisonIntelligente\\src\\GUI\\images\\logo2.png";
+                ImageIcon icon = new ImageIcon(imagePath);
+                setIconImage(icon.getImage());
             }
             }
 
