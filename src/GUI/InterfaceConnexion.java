@@ -17,8 +17,8 @@ public class InterfaceConnexion extends JFrame {
         c.weighty = 0.002;
         c.gridy = 0;
         String imagePath = "..\\MaisonIntelligente\\src\\GUI\\images\\logo2.png";
-        int desiredWidth = 78;
-        int desiredHeight = 34;
+        int desiredWidth = 151;
+        int desiredHeight = 65;
 
 
         ImageIcon img = new ImageIcon(imagePath);
@@ -44,26 +44,47 @@ public class InterfaceConnexion extends JFrame {
         c.gridy = 1;
         getContentPane().add(content,c);
 
-        GridLayout gridLayout = new GridLayout(2, 2);
-        //gridLayout.setHgap(10); // Set horizontal gap (margin)
-        gridLayout.setVgap(30); // Set vertical gap (margin)
+        content.setLayout(new GridLayout(2, 2,0,30));
 
-        content.setLayout(gridLayout);
-        content.setBorder(new EmptyBorder(50, 100, 50, 100));
+        // Create the nested panels with GridBagLayout for each column
+        JPanel row1 = new JPanel(new BorderLayout());
+        JPanel row2 = new JPanel(new BorderLayout());
+        JPanel row3 = new JPanel(new BorderLayout());
+        JPanel row4 = new JPanel(new BorderLayout());
+        // Create constraints for the GridBagLayout
+
+
+
+        // Add the nested panels to the content panel
+
+        content.setBorder(new EmptyBorder(250, 350, 200, 100));
 
         JLabel loginLabel= new JLabel("Login");
-        loginLabel.setFont(new Font("Arial", Font.BOLD, 20));
-        content.add(loginLabel);
+        loginLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        row1.add(loginLabel, BorderLayout.WEST);
+
         loginField = new JTextField();
-        loginField.setFont(new Font("Arial",Font.PLAIN, 20));
-        content.add(loginField);
+        loginField.setFont(new Font("Arial",Font.PLAIN, 24));
+        //loginField.setSize(100,50);
+        row2.add(loginField);
+
 
         JLabel pwdLabel = new JLabel("Mot de passe");
-        pwdLabel.setFont(new Font("Arial", Font.BOLD, 20));
-        content.add(pwdLabel);
+        pwdLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        row3.add(pwdLabel, BorderLayout.WEST);
+
         passwordField = new JPasswordField();
-        passwordField.setFont(new Font("Arial", Font.BOLD, 20));
-        content.add(passwordField);
+        passwordField.setFont(new Font("Arial", Font.BOLD, 24));
+        row4.add(passwordField);
+
+
+        content.add(row1);
+        content.add(row2);
+        content.add(row3);
+        content.add(row4);
+
+        // Set the content panel on the frame
+        //content.getRootPane();
     }
     public void Footer(JPanel footer, GridBagConstraints c){
         //footer.setBackground(Color.GRAY);
@@ -71,19 +92,24 @@ public class InterfaceConnexion extends JFrame {
         c.weighty = 0.1;
         c.gridy = 2;
         getContentPane().add(footer,c);
-        footer.setLayout(new FlowLayout());
+        footer.setLayout(new FlowLayout(1, 50, FlowLayout.CENTER));
 
-        footer.setBorder(new EmptyBorder(0, 0, 0, -200));
+        footer.setBorder(new EmptyBorder(0, 0, 0, -880));
 
         inscptionBtn = new JButton("Inscription");
-        inscptionBtn.setFont(new Font("Arial", Font.BOLD, 20));
-        inscptionBtn.setBackground(Color.decode("#7FC951"));
-        footer.add(inscptionBtn);
+        inscptionBtn.setFont(new Font("Arial", Font.BOLD, 36));
+        inscptionBtn.setBackground(Color.decode("#ABEAAB"));
 
         connectBtn = new JButton("Connexion");
-        connectBtn.setFont(new Font("Arial", Font.BOLD, 20));
-        connectBtn.setBackground(Color.decode("#7FC951"));
+        connectBtn.setFont(new Font("Arial", Font.BOLD, 36));
+        connectBtn.setBackground(Color.decode("#ABEAAB"));
 
+        int buttonGap = 10;
+        connectBtn.setBorder(new EmptyBorder(buttonGap, buttonGap, buttonGap, buttonGap));
+
+        inscptionBtn.setBorder(new EmptyBorder(buttonGap, buttonGap, buttonGap, buttonGap));
+
+        footer.add(inscptionBtn);
         footer.add(connectBtn);
 
     }
@@ -109,7 +135,7 @@ public class InterfaceConnexion extends JFrame {
         setTitle(title);
         this.Window();
         setVisible(true);
-        setSize(600, 400);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setResizable(false);
         setLocationRelativeTo(null);
     }
