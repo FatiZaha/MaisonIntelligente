@@ -56,11 +56,12 @@ public class InterInfoAppareil extends JFrame {
         c.gridy = 2;
 
         content.setLayout(new FlowLayout());
-        content.setBorder(new EmptyBorder(100, 0, 100, 0));
+        content.setBorder(new EmptyBorder(200, 0, 100, 0));
         content.setBackground(Color.GRAY);
         JButton etat =new JButton("button");
         etat.setPreferredSize(new Dimension(100, 150));
         content.add(etat);
+// section de modification de nom appareil
 
         JPanel change = new JPanel(new GridBagLayout());
         change.setPreferredSize(new Dimension(1000, 300));
@@ -72,36 +73,47 @@ public class InterInfoAppareil extends JFrame {
         grid.gridy = 0;
         JLabel title = new JLabel("Changer nom Appareil");
         title.setFont(new Font("Arial", Font.BOLD, 32));
+        JPanel titlePan = new JPanel(new FlowLayout());
+        titlePan.add(title,FlowLayout.LEFT);
+        titlePan.setBorder(new EmptyBorder(0,0,40,  500));
 
-        change.add(title,grid);
+        change.add(titlePan,grid);
 
         grid.gridy = 1;
-        JPanel info = new JPanel(new FlowLayout());
-        Label oldNameLabel = new Label("old name");
+        JPanel info = new JPanel(new FlowLayout(FlowLayout.CENTER, 12, 0));
+        Label oldNameLabel = new Label("old name ");
         oldNameLabel.setFont(new Font("Arial", Font.PLAIN, 24));
+
         JTextField oldNameField = new JTextField();
+        oldNameField.setPreferredSize(new Dimension(500, 35));
         oldNameField.setFont(new Font("Arial", Font.PLAIN, 24));
-        info.add(oldNameLabel);
-        info.add(oldNameField);
+
+        info.add(oldNameLabel,FlowLayout.LEFT);
+        info.add(oldNameField,FlowLayout.CENTER);
+
         change.add(info,grid);
 
         grid.gridy = 2;
-        JPanel info2 = new JPanel(new FlowLayout());
+        JPanel info2 = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 0));
         Label newNameLabel = new Label("new name");
         newNameLabel.setFont(new Font("Arial", Font.PLAIN, 24));
 
         JTextField newNameField = new JTextField();
         newNameField.setFont(new Font("Arial", Font.PLAIN, 24));
+        newNameField.setPreferredSize(new Dimension(500, 35));
 
-        info2.add(newNameLabel);
-        info2.add(newNameField);
+        info2.add(newNameLabel,FlowLayout.LEFT);
+        info2.add(newNameField,FlowLayout.CENTER);
         change.add(info2,grid);
 
         grid.gridy = 3;
         JButton validerBtn= new JButton("Valider");
         validerBtn.setFont(new Font("Arial", Font.BOLD, 32));
         validerBtn.setBorder(new EmptyBorder(2, 30, 2, 30));
-        change.add(validerBtn,grid);
+        JPanel validerPan = new JPanel(new FlowLayout());
+        validerPan.add(validerBtn);
+        validerPan.setBorder(new EmptyBorder(0, 460, 2, 0));
+        change.add(validerPan,grid);
         content.add(change);
 
         getContentPane().add(content, c);
