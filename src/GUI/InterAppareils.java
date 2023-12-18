@@ -80,7 +80,7 @@ public class InterAppareils extends JFrame {
         getContentPane().add(navFilter,c);
 
     }
-    
+
 
     public void Content(JPanel content, GridBagConstraints c) {
         c.weighty = 0.1;
