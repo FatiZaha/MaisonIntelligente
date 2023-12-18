@@ -55,16 +55,18 @@ public class InterInfoAppareil extends JFrame {
         c.weighty = 0.1;
         c.gridy = 2;
 
-        content.setLayout(new FlowLayout());
-        content.setBorder(new EmptyBorder(200, 0, 100, 0));
-        content.setBackground(Color.GRAY);
-        JButton etat =new JButton("button");
-        etat.setPreferredSize(new Dimension(100, 150));
+        content.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 0));
+        content.setBorder(new EmptyBorder(150, 0, 100, -100));
+        //content.setBackground(Color.GRAY);
+
+        // add the button etat
+        JButton etat =new JButton();
+        etat.setPreferredSize(new Dimension(400, 300));
         content.add(etat);
 // section de modification de nom appareil
 
         JPanel change = new JPanel(new GridBagLayout());
-        change.setPreferredSize(new Dimension(1000, 300));
+        change.setPreferredSize(new Dimension(850, 300));
         GridBagConstraints grid = new GridBagConstraints();
         grid.fill = GridBagConstraints.BOTH;
 
@@ -80,8 +82,8 @@ public class InterInfoAppareil extends JFrame {
         change.add(titlePan,grid);
 
         grid.gridy = 1;
-        JPanel info = new JPanel(new FlowLayout(FlowLayout.CENTER, 12, 0));
-        Label oldNameLabel = new Label("old name ");
+        JPanel info = new JPanel(new FlowLayout(FlowLayout.CENTER, 29, 0));
+        Label oldNameLabel = new Label("ancien nom");
         oldNameLabel.setFont(new Font("Arial", Font.PLAIN, 24));
 
         JTextField oldNameField = new JTextField();
@@ -95,7 +97,7 @@ public class InterInfoAppareil extends JFrame {
 
         grid.gridy = 2;
         JPanel info2 = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 0));
-        Label newNameLabel = new Label("new name");
+        Label newNameLabel = new Label("nouveau nom");
         newNameLabel.setFont(new Font("Arial", Font.PLAIN, 24));
 
         JTextField newNameField = new JTextField();
