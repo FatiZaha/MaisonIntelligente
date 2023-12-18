@@ -40,21 +40,21 @@ public class InterAppareils extends JFrame {
         searchButton.setContentAreaFilled(false);
         searchButton.setBorder(new EmptyBorder(0, 0, 0, 160));
 
- //addHomeButton :
+ //addDeviceButton :
 
-        JButton addHomeButton = new JButton();
+        JButton addDeviceButton = new JButton();
 
-        String imagePath2 = "..\\MaisonIntelligente\\src\\GUI\\images\\add_home.png";
-        int desiredWidth2 = 32;
-        int desiredHeight2 = 32;
+        String imagePath2 = "..\\MaisonIntelligente\\src\\GUI\\images\\add_device.png";
+        int desiredWidth2 = 50;
+        int desiredHeight2 = 50;
 
         ImageIcon img2 = new ImageIcon(imagePath2);
         Image image2 = img2.getImage().getScaledInstance(desiredWidth2, desiredHeight2, Image.SCALE_SMOOTH);
         ImageIcon searchIcon2 = new ImageIcon(image2);
 
-        addHomeButton.setIcon(searchIcon2);
-        addHomeButton.setContentAreaFilled(false);
-        addHomeButton.setBorder(new EmptyBorder(0,0,0,0));
+        addDeviceButton.setIcon(searchIcon2);
+        addDeviceButton.setContentAreaFilled(false);
+        addDeviceButton.setBorder(new EmptyBorder(0,0,0,0));
 
 
 //backIconButton :
@@ -75,7 +75,7 @@ public class InterAppareils extends JFrame {
 
         navFilter.add(searchField, FlowLayout.LEFT);
         navFilter.add(searchButton, FlowLayout.CENTER);
-        navFilter.add(addHomeButton, FlowLayout.RIGHT);
+        navFilter.add(addDeviceButton, FlowLayout.RIGHT);
         navFilter.add(backIconButton, FlowLayout.LEFT);
         getContentPane().add(navFilter,c);
 
