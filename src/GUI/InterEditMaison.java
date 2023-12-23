@@ -4,7 +4,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
-public class InterAjoutMaison extends JFrame {
+public class InterEditMaison extends JFrame {
 
     public JTextField searchField;
 
@@ -97,7 +97,7 @@ public class InterAjoutMaison extends JFrame {
         annulerBtn.setFont(new Font("Arial", Font.BOLD, 36));
         annulerBtn.setBackground(Color.decode("#ABEAAB"));
 
-        JButton ajouterBtn = new JButton("Ajouter");
+        JButton ajouterBtn = new JButton("Modifier");
         ajouterBtn.setFont(new Font("Arial", Font.BOLD, 36));
         ajouterBtn.setBackground(Color.decode("#ABEAAB"));
 
@@ -116,7 +116,7 @@ public class InterAjoutMaison extends JFrame {
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.BOTH;
 
-        JPanel header= InterHeader.createHeaderPanel("Ajouter Maison",c);
+        JPanel header= InterHeader.createHeaderPanel("Ajouter Chambre",c);
         getContentPane().add(header,c);
         JPanel content= new JPanel();
         JPanel footer= new JPanel();
@@ -128,7 +128,7 @@ public class InterAjoutMaison extends JFrame {
         validate();
     }
 
-    public InterAjoutMaison(String title){
+    public InterEditMaison(String title){
         setTitle(title);
         this.Window();
         setVisible(true);

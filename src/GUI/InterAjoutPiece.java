@@ -4,7 +4,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
-public class InterAjoutMaison extends JFrame {
+public class InterAjoutPiece extends JFrame {
 
     public JTextField searchField;
 
@@ -116,7 +116,7 @@ public class InterAjoutMaison extends JFrame {
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.BOTH;
 
-        JPanel header= InterHeader.createHeaderPanel("Ajouter Maison",c);
+        JPanel header= InterHeader.createHeaderPanel("Ajouter Chambre",c);
         getContentPane().add(header,c);
         JPanel content= new JPanel();
         JPanel footer= new JPanel();
@@ -128,7 +128,7 @@ public class InterAjoutMaison extends JFrame {
         validate();
     }
 
-    public InterAjoutMaison(String title){
+    public InterAjoutPiece(String title){
         setTitle(title);
         this.Window();
         setVisible(true);
