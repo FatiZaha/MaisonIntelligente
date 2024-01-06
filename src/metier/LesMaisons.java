@@ -5,7 +5,7 @@ public class LesMaisons{
 
 	private ArrayList<Maison> m;
 	
-	 public LesMaisons() {
+	    public LesMaisons() {
 		
 		this.m = new ArrayList<Maison>();
 	}
@@ -19,25 +19,25 @@ public class LesMaisons{
 		
 	    
 	    public void Supprimer_maison(List<String> Nom) {
-	    	
-	    	/*for (Maison maison : m) {
-				if(Nom.contains(maison.getNom())) m.remove(maison);
-				}*/
+
 	    	m.removeIf(maison -> Nom.contains(maison.getNom()));
 	      
 	    }
 
 	   
 		public Maison Rechercher_maison(String Nom) {
-			/*for (Maison maison : m) {
-				if(Nom==maison.getNom()) return maison;
-				}*/
+
 			return m.stream()
 		            .filter(maison -> Nom.equals(maison.getNom()))
 		            .findFirst() //récupère le premier élément correspondant trouvé
 		            .orElse(null);
 		    }
 
-	   
-	
+	    public void Modifier_maison(String Nom, int nbrPieces) {
+		Maison m = Rechercher_maison(Nom);
+		if (m != null) {
+			m.setNombre_pieces(nbrPieces);
+		}
+	}
+
 }

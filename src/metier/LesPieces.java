@@ -14,12 +14,9 @@ public class LesPieces {
 		 Piece p= new Piece(Nom);
 	       this.p.add(p);
 	    }
-  
-	    
+
 	public void Supprimer_piece(List<String> Nom) {
-	    	/*for (Piece piece : p) {
-			if(Nom.contains(piece.getNom())) p.remove(piece);
-			}*/
+
 	    	p.removeIf(piece -> Nom.contains(piece.getNom()));
 	    }
 	    
@@ -29,5 +26,13 @@ public class LesPieces {
 	                .findFirst()
 	                .orElse(null);
 	    }
+
+	public void Modifier_piece(String Nom, String nouveauNom) {
+		Piece p = Rechercher_piece(Nom);
+		if (p != null) {
+			p.setNom(nouveauNom);
+		}
+	}
+	}
 	    
-}
+

@@ -7,14 +7,12 @@ public class Piece {
 	
 	 private int Code;
 	 private String Nom;
-	    
-  
+
    
     public Piece(String nom) {
 		
 		Nom = nom;
 	}
-
 
 
 	public String getNom() {
@@ -28,12 +26,10 @@ public class Piece {
 	}
 
 
-
 	public String ToString() {
         
-        return "";
+        return "Piece [Code=" + Code + ", Nom=" + Nom + "]";
     }
     
-   
-    
+
 }

@@ -1,10 +1,10 @@
 package metier;
 
+import metier.LesExceptions.AbonnementException;
+import metier.LesExceptions.PaiementException;
+
 import java.util.*;
 
-/**
- * 
- */
 public class Abonnement {
 	
 	private int Numero;
@@ -26,13 +26,18 @@ public class Abonnement {
 
    
    
-    public void Payer(boolean etat) {
+    public void Payer(boolean etat) throws PaiementException {
        Etat=true;
+	   System.out.println("L'abonnement a été payé avec succès.");
     }
 
-   
-    public void Afficher_abonnement() {
-       
+    public void Afficher_abonnement()throws AbonnementException {
+		System.out.println("Numéro d'abonnement : " + Numero);
+		System.out.println("Prix : " + Prix);
+		System.out.println("Date de début : " + Date_debut);
+		System.out.println("Date de fin : " + Date_fin);
+		System.out.println("Type d'abonnement : " + Type_abonnement);
+		System.out.println("État : " + (Etat ? "Payé" : "Non payé"));
     }
 
 }

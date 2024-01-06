@@ -1,8 +1,6 @@
 package metier;
 
 import java.util.*;
-
-
 public class Reclamation {
 
 	 private int Numero;
@@ -13,20 +11,12 @@ public class Reclamation {
     	this.Message=Message;
     }
 
-
-   
-
     public String getMessage() {
 		return Message;
 	}
 
-
-
-	public void Repondre_reclam() {
-        
     }
 
     
    
 
-}

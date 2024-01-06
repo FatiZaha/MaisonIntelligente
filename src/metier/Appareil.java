@@ -2,9 +2,6 @@ package metier;
 
 //import java.util.*;
 
-/**
- * 
- */
 public class Appareil {
 	
 	  private String Id;
@@ -44,10 +41,6 @@ public class Appareil {
 
 
 	public String ToString() {
-       return "";
+       return "Appareil[Nom=" +Nom+ ",Etat=" +Etat+ "]";
     }
-
-    
-    
-
 }

@@ -98,8 +98,5 @@ public class Utilisateur {
 		Mot_de_passe = mot_de_passe;
 	}
     
-    
-   
-   
 
 }

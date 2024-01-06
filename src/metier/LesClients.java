@@ -1,6 +1,7 @@
 package metier;
 import java.util.*;
 import metier.LesExceptions.ConnexionException;
+import metier.LesExceptions.InscriptionException;
 
 public class LesClients{
 
@@ -14,7 +15,7 @@ public class LesClients{
 
 
 	public void Sinscrire(String nom, String prenom, String tel, String email, String adresse,
-			String nom_utilisateur, String mot_de_passe) {
+			String nom_utilisateur, String mot_de_passe) throws InscriptionException {
 		Client c=new Client(nom, prenom, tel, email, adresse, nom_utilisateur, mot_de_passe); 
 		this.c.add(c);
         
@@ -25,8 +26,7 @@ public class LesClients{
     	
     	for (Client client : c) {
 			if(client.getNom_utilisateur()!=login || client.getMot_de_passe()!=pwd) throw new ConnexionException("Donnees incoreectes"); {
-			//else if()	
-				//return true;
+
 			}
 		}
     	return false;

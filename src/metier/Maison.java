@@ -1,7 +1,6 @@
 package metier;
 
-import java.util.*;
-
+//import java.util.*;
 
 public class Maison {
 
@@ -17,12 +16,9 @@ public class Maison {
 	}
 
 
-   
     public int getNombre_pieces() {
 		return Nombre_pieces;
 	}
-
-
 
 	public void setNombre_pieces(int nombre_pieces) {
 		Nombre_pieces = nombre_pieces;
@@ -44,7 +40,7 @@ public class Maison {
 
 	public String ToString() {
        
-        return "";
+        return "Maison [Numero=" + Numero + ", Nom=" + Nom + ", Nombre_pieces=" + Nombre_pieces + "]";
     }
 
 }
