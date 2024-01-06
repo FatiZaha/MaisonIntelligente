@@ -131,10 +131,10 @@ public class InterInscription extends JFrame {
             creerBtn = new JButton("Créer");
             creerBtn.setFont(new Font("Arial", Font.BOLD, 36));
             creerBtn.setBackground(Color.decode("#ABEAAB"));
-            int buttonGap = 10;
-            creerBtn.setBorder(new EmptyBorder(buttonGap, buttonGap, buttonGap, buttonGap));
+           // int buttonGap = 10;
+           // creerBtn.setBorder(new EmptyBorder(buttonGap, buttonGap, buttonGap, buttonGap));
 
-            AnnulerBtn.setBorder(new EmptyBorder(buttonGap, buttonGap, buttonGap, buttonGap));
+           // AnnulerBtn.setBorder(new EmptyBorder(buttonGap, buttonGap, buttonGap, buttonGap));
 
             footer.add(AnnulerBtn);
             footer.add(creerBtn);

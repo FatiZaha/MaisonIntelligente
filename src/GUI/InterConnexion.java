@@ -1,15 +1,19 @@
 package GUI;
-
+import DAO.*;
 import java.awt.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.*;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
 public class InterConnexion extends JFrame {
 
     JTextField loginField;
     JPasswordField passwordField;
     JButton connectBtn;
     JButton inscptionBtn;
+
+
 
     /*public void Header(JPanel header, GridBagConstraints c){
 
@@ -115,25 +119,27 @@ public class InterConnexion extends JFrame {
 
     }
 
-    public void Window(){
+    public void Window() {
 
         GridBagLayout grid = new GridBagLayout();
         setLayout(grid);
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.BOTH;
 
-        JPanel header= InterHeader.createHeaderPanel("Se connecter",c);
-        getContentPane().add(header,c);
-        JPanel content= new JPanel();
-        JPanel footer= new JPanel();
+        JPanel header = InterHeader.createHeaderPanel("Se connecter", c);
+        getContentPane().add(header, c);
+        JPanel content = new JPanel();
+        JPanel footer = new JPanel();
 
         //this.Header(header,c);
-        this.Content(content,c);
-        this.Footer(footer,c);
+        this.Content(content, c);
+        this.Footer(footer, c);
         //pack();
         validate();
 
+
     }
+
     public InterConnexion(String title) {
         setTitle(title);
         this.Window();
@@ -144,6 +150,10 @@ public class InterConnexion extends JFrame {
         String imagePath = "..\\MaisonIntelligente\\src\\GUI\\images\\logo2.png";
         ImageIcon icon = new ImageIcon(imagePath);
         setIconImage(icon.getImage());
+
+
+
+
     }
 
 }
