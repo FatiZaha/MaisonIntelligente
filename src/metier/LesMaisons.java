@@ -36,7 +36,7 @@ public class LesMaisons{
 	    public void Modifier_maison(String Nom, int nbrPieces) {
 		Maison m = Rechercher_maison(Nom);
 		if (m != null) {
-			m.setNombre_pieces(nbrPieces);
+			m.setNom(Nom);
 		}
 	}
 
