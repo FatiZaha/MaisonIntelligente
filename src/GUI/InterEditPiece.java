@@ -3,6 +3,8 @@ package GUI;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class InterEditPiece extends JFrame {
 
@@ -97,10 +99,28 @@ public class InterEditPiece extends JFrame {
         annulerBtn.setFont(new Font("Arial", Font.BOLD, 36));
         annulerBtn.setBackground(Color.decode("#ABEAAB"));
 
+        annulerBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                InterMaisons maisons = new InterMaisons("Maison");
+
+                // Actions à effectuer lorsque le bouton est cliqué
+                dispose(); // Fermer la fenêtre
+            }
+        });
+
         JButton ajouterBtn = new JButton("Modifier");
         ajouterBtn.setFont(new Font("Arial", Font.BOLD, 36));
         ajouterBtn.setBackground(Color.decode("#ABEAAB"));
+        ajouterBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                InterMaisons maisons = new InterMaisons("Maison");
 
+                // Actions à effectuer lorsque le bouton est cliqué
+                dispose(); // Fermer la fenêtre
+            }
+        });
         //int buttonGap = 10;
         annulerBtn.setBorder(new EmptyBorder(2, 30, 2, 30));
 

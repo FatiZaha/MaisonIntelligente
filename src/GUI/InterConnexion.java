@@ -111,8 +111,27 @@ public class InterConnexion extends JFrame {
 
         //int buttonGap = 10;
         connectBtn.setBorder(new EmptyBorder(2, 30, 2, 30));
+        connectBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                InterMaisons maison = new InterMaisons("Les Maisons");
+
+                // Actions à effectuer lorsque le bouton est cliqué
+                dispose(); // Fermer la fenêtre
+            }
+        });
 
         inscptionBtn.setBorder(new EmptyBorder(2, 30, 2, 30));
+
+        inscptionBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                InterInscription interfaceInscription = new InterInscription("Inscription");
+
+                // Actions à effectuer lorsque le bouton est cliqué
+                dispose(); // Fermer la fenêtre
+            }
+        });
 
         footer.add(inscptionBtn);
         footer.add(connectBtn);

@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class InterAjoutPiece extends JFrame {
+public class InterAjoutAppareil extends JFrame {
 
     public JTextField searchField;
 
@@ -99,29 +99,33 @@ public class InterAjoutPiece extends JFrame {
         annulerBtn.setFont(new Font("Arial", Font.BOLD, 36));
         annulerBtn.setBackground(Color.decode("#ABEAAB"));
 
-        JButton ajouterBtn = new JButton("Ajouter");
-        ajouterBtn.setFont(new Font("Arial", Font.BOLD, 36));
-        ajouterBtn.setBackground(Color.decode("#ABEAAB"));
-        ajouterBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                InterPieces pieces = new InterPieces("Pieces");
-
-                // Actions à effectuer lorsque le bouton est cliqué
-                dispose(); // Fermer la fenêtre
-            }
-        });
-        //int buttonGap = 10;
-        annulerBtn.setBorder(new EmptyBorder(2, 30, 2, 30));
         annulerBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                InterPieces pieces = new InterPieces("Pieces");
+                InterAppareils appareils = new InterAppareils("Appareils");
 
                 // Actions à effectuer lorsque le bouton est cliqué
                 dispose(); // Fermer la fenêtre
             }
         });
+
+        JButton ajouterBtn = new JButton("Ajouter");
+        ajouterBtn.setFont(new Font("Arial", Font.BOLD, 36));
+        ajouterBtn.setBackground(Color.decode("#ABEAAB"));
+
+        //int buttonGap = 10;
+        annulerBtn.setBorder(new EmptyBorder(2, 30, 2, 30));
+
+        ajouterBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                InterAppareils appareils = new InterAppareils("Appareils");
+
+                // Actions à effectuer lorsque le bouton est cliqué
+                dispose(); // Fermer la fenêtre
+            }
+        });
+
         ajouterBtn.setBorder(new EmptyBorder(2, 30, 2, 30));
 
         footer.add(annulerBtn);
@@ -134,7 +138,7 @@ public class InterAjoutPiece extends JFrame {
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.BOTH;
 
-        JPanel header= InterHeader.createHeaderPanel("Ajouter Chambre",c);
+        JPanel header= InterHeader.createHeaderPanel("Ajouter Appareil",c);
         getContentPane().add(header,c);
         JPanel content= new JPanel();
         JPanel footer= new JPanel();
@@ -146,7 +150,7 @@ public class InterAjoutPiece extends JFrame {
         validate();
     }
 
-    public InterAjoutPiece(String title){
+    public InterAjoutAppareil(String title){
         setTitle(title);
         this.Window();
         setVisible(true);

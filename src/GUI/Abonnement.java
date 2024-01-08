@@ -1,5 +1,7 @@
 package GUI;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.border.EmptyBorder;
 import javax.swing.*;
 
@@ -89,6 +91,26 @@ public class Abonnement extends JFrame{
         ValiderBtn = new JButton("Valider");
         ValiderBtn.setFont(new Font("Arial", Font.BOLD, 20));
         ValiderBtn.setBackground(Color.decode("#7FC951"));
+
+        ValiderBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                InterConnexion connexion = new InterConnexion("Connexion");
+
+                // Actions à effectuer lorsque le bouton est cliqué
+                dispose(); // Fermer la fenêtre
+            }
+        });
+
+        AnnulerBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                InterInscription inscription = new InterInscription("Inscription");
+
+                // Actions à effectuer lorsque le bouton est cliqué
+                dispose(); // Fermer la fenêtre
+            }
+        });
 
         footer.add(ValiderBtn);
 

@@ -3,6 +3,8 @@ package GUI;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class InterInfoAppareil extends JFrame {
 
@@ -30,7 +32,15 @@ public class InterInfoAppareil extends JFrame {
         returnButton.setIcon(returnIcon);
         returnButton.setContentAreaFilled(false);
         returnButton.setBorder(new EmptyBorder(0,0,0,0));
+        returnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                InterAppareils appareils = new InterAppareils("Appareils");
 
+                // Actions à effectuer lorsque le bouton est cliqué
+                dispose(); // Fermer la fenêtre
+            }
+        });
         JButton deleteButton = new JButton();
 
         String imagePath2 = "..\\MaisonIntelligente\\src\\GUI\\images\\delete_icon.png";
@@ -44,7 +54,15 @@ public class InterInfoAppareil extends JFrame {
         deleteButton.setIcon(deleteIcon);
         deleteButton.setContentAreaFilled(false);
         deleteButton.setBorder(new EmptyBorder(0,1400,0,0));
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                InterAppareils appareils = new InterAppareils("Appareils");
 
+                // Actions à effectuer lorsque le bouton est cliqué
+                dispose(); // Fermer la fenêtre
+            }
+        });
 
         navBar.add(returnButton);
         navBar.add(deleteButton);
@@ -110,6 +128,16 @@ public class InterInfoAppareil extends JFrame {
 
         grid.gridy = 3;
         JButton validerBtn= new JButton("Valider");
+
+        validerBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                InterAppareils appareils = new InterAppareils("Appareils");
+
+                // Actions à effectuer lorsque le bouton est cliqué
+                dispose(); // Fermer la fenêtre
+            }
+        });
         validerBtn.setFont(new Font("Arial", Font.BOLD, 32));
         validerBtn.setBorder(new EmptyBorder(2, 30, 2, 30));
         JPanel validerPan = new JPanel(new FlowLayout());

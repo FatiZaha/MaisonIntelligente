@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class InterAppareils extends JFrame {
+public class InterPieces extends JFrame {
     private JTextField searchField;
     public void NavFilter(JPanel navFilter, GridBagConstraints c) {
 
@@ -46,7 +46,7 @@ public class InterAppareils extends JFrame {
 
         JButton addDeviceButton = new JButton();
 
-        String imagePath2 = "..\\MaisonIntelligente\\src\\GUI\\images\\add_device.png";
+        String imagePath2 = "..\\MaisonIntelligente\\src\\GUI\\images\\add_room.png";
         int desiredWidth2 = 50;
         int desiredHeight2 = 50;
 
@@ -60,7 +60,7 @@ public class InterAppareils extends JFrame {
         addDeviceButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                InterAjoutAppareil appareil = new InterAjoutAppareil("Ajouter Appareil");
+                InterAjoutPiece piece = new InterAjoutPiece("Ajouter Piece");
 
                 // Actions à effectuer lorsque le bouton est cliqué
                 dispose(); // Fermer la fenêtre
@@ -86,7 +86,7 @@ public class InterAppareils extends JFrame {
         backIconButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                InterPieces pieces = new InterPieces("Pieces");
+                InterMaisons maisons = new InterMaisons("Maisons");
 
                 // Actions à effectuer lorsque le bouton est cliqué
                 dispose(); // Fermer la fenêtre
@@ -113,11 +113,11 @@ public class InterAppareils extends JFrame {
 
         // Create and add elements to the grid
         for (int i = 1; i <= 18; i++) {
-            JButton button = new JButton("Appareil " + i);
+            JButton button = new JButton("Piece " + i);
             button.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    InterInfoAppareil appareil = new InterInfoAppareil("Appareil");
+                    InterAppareils appareil = new InterAppareils("Appareil");
 
                     // Actions à effectuer lorsque le bouton est cliqué
                     dispose(); // Fermer la fenêtre
@@ -142,13 +142,13 @@ public class InterAppareils extends JFrame {
         getContentPane().add(content, c);
     }
 
-    public void Window() {
+    public void Window(String title) {
         GridBagLayout grid = new GridBagLayout();
         setLayout(grid);
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.BOTH;
 
-        JPanel header = InterHeader.createHeaderPanel("Appareils", c);
+        JPanel header = InterHeader.createHeaderPanel(title, c);
         getContentPane().add(header, c);
         JPanel navFilter = new JPanel();
         JPanel content = new JPanel();
@@ -160,9 +160,9 @@ public class InterAppareils extends JFrame {
         validate();
     }
 
-    public InterAppareils(String title) {
+    public InterPieces(String title) {
         setTitle(title);
-        this.Window();
+        this.Window(title);
         setVisible(true);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setResizable(false);

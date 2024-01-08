@@ -1,5 +1,7 @@
 package GUI;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
@@ -133,9 +135,25 @@ public class InterInscription extends JFrame {
             creerBtn.setBackground(Color.decode("#ABEAAB"));
            // int buttonGap = 10;
            // creerBtn.setBorder(new EmptyBorder(buttonGap, buttonGap, buttonGap, buttonGap));
+            creerBtn.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Abonnement abonnement = new Abonnement("Abonnement");
 
+                    // Actions à effectuer lorsque le bouton est cliqué
+                    dispose(); // Fermer la fenêtre
+                }
+            });
            // AnnulerBtn.setBorder(new EmptyBorder(buttonGap, buttonGap, buttonGap, buttonGap));
+            AnnulerBtn.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    InterConnexion connexion = new InterConnexion("Connexion");
 
+                    // Actions à effectuer lorsque le bouton est cliqué
+                    dispose(); // Fermer la fenêtre
+                }
+            });
             footer.add(AnnulerBtn);
             footer.add(creerBtn);
         }

@@ -40,7 +40,15 @@ public class InterMaisons extends JFrame {
         searchButton.setBorder(new EmptyBorder(0,0,0,0));
 
         JButton addHomeButton = new JButton();
+        addHomeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                InterAjoutMaison editPiece = new InterAjoutMaison("Ajouter Maison");
 
+                // Actions à effectuer lorsque le bouton est cliqué
+                dispose(); // Fermer la fenêtre
+            }
+        });
         String imagePath2 = "..\\MaisonIntelligente\\src\\GUI\\images\\add_home.png";
         int desiredWidth2 = 32;
         int desiredHeight2 = 32;
@@ -71,8 +79,17 @@ public class InterMaisons extends JFrame {
 
             // Create and add elements to the grid
             for (int i = 1; i <= 18; i++) {
-                JButton button = new JButton("Button " + i);
+                JButton button = new JButton("Maison " + i);
                 gridPanel.add(button);
+                button.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        InterPieces pieces = new InterPieces("Pieces");
+
+                        // Actions à effectuer lorsque le bouton est cliqué
+                        dispose(); // Fermer la fenêtre
+                    }
+                });
                 button.setPreferredSize(new Dimension(200, 250));
             }
 
