@@ -20,18 +20,22 @@ public class LesThemes {
         theme_piece = new ArrayList<theme>();
         theme_appareil = new ArrayList<theme>();
 
+        GetThemesAppareil();
+        GetThemesMaison();
+        GetThemesPieces();
     }
 
     private void GetThemesMaison(){
         String themes = "Select * FROM theme_maison;";
         PreparedStatement statement = null;
 
-        theme th = new theme();
+
         try {
+
             statement = dm.conx.prepareStatement(themes);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-
+                theme th = new theme();
                 th.setId(resultSet.getInt("id"));
                 th.setImage(resultSet.getString("image"));
                 theme_maison.add(th);
@@ -48,12 +52,12 @@ public class LesThemes {
         String themes = "Select * FROM theme_piece;";
         PreparedStatement statement = null;
 
-        theme th = new theme();
+
         try {
             statement = dm.conx.prepareStatement(themes);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-
+                theme th = new theme();
                 th.setId(resultSet.getInt("id"));
                 th.setImage(resultSet.getString("image"));
                 theme_piece.add(th);
@@ -70,12 +74,12 @@ public class LesThemes {
         String themes = "Select * FROM theme_appareil;";
         PreparedStatement statement = null;
 
-        theme th = new theme();
+
         try {
             statement = dm.conx.prepareStatement(themes);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-
+                theme th = new theme();
                 th.setId(resultSet.getInt("id"));
                 th.setImage(resultSet.getString("image"));
                 theme_appareil.add(th);

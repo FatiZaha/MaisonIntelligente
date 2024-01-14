@@ -1,5 +1,11 @@
 package GUI;
 
+import DAO.LesAppareils;
+import metier.Appareil;
+import metier.Client;
+import metier.Maison;
+import metier.Piece;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -9,6 +15,10 @@ import java.awt.event.ActionListener;
 
 public class InterAppareils extends JFrame {
     private JTextField searchField;
+    Client client;
+    Maison maison;
+    Piece piece;
+    LesAppareils lesAppareils;
     public void NavFilter(JPanel navFilter, GridBagConstraints c) {
 
         c.weighty = 0.002;
@@ -60,7 +70,7 @@ public class InterAppareils extends JFrame {
         addDeviceButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                InterAjoutAppareil appareil = new InterAjoutAppareil("Ajouter Appareil");
+                InterAjoutAppareil appareil = new InterAjoutAppareil("Ajouter Appareil",piece,maison,client);
 
                 // Actions à effectuer lorsque le bouton est cliqué
                 dispose(); // Fermer la fenêtre
@@ -86,7 +96,7 @@ public class InterAppareils extends JFrame {
         backIconButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //InterPieces pieces = new InterPieces("Pieces", maison, client);
+                InterPieces pieces = new InterPieces("Pieces", maison, client);
 
                 // Actions à effectuer lorsque le bouton est cliqué
                 dispose(); // Fermer la fenêtre
@@ -107,24 +117,32 @@ public class InterAppareils extends JFrame {
         c.gridy = 2;
 
         content.setLayout(new BorderLayout());
-        content.setBorder(new EmptyBorder(0, 200, 0, 200));
+        content.setBorder(new EmptyBorder(10, 200, 0, 200));
 
         JPanel gridPanel = new JPanel(new GridLayout(0, 3, 50, 30)); // 3 columns, 10 pixels horizontal and vertical gap
 
         // Create and add elements to the grid
-        for (int i = 1; i <= 18; i++) {
-            JButton button = new JButton("Appareil " + i);
+        for (Appareil appareil: lesAppareils.a)  {
+            JButton button = new JButton(appareil.getNom());
+            button.setSize(500,500);
+            ImageIcon imageIcon = new ImageIcon(appareil.theme.image); // Replace with the actual path to your image
+
+            System.out.println(appareil.theme.image);
+            Image image = imageIcon.getImage();
+            Image scaledImage = image.getScaledInstance(button.getWidth(), button.getHeight(), Image.SCALE_SMOOTH);
+            ImageIcon scaledImageIcon = new ImageIcon(scaledImage);
+            button.setIcon(scaledImageIcon);
+            gridPanel.add(button);
             button.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    InterInfoAppareil appareil = new InterInfoAppareil("Appareil");
+                    InterInfoAppareil infoAppareil = new InterInfoAppareil(appareil.getNom(),appareil,piece,maison,client);
 
                     // Actions à effectuer lorsque le bouton est cliqué
                     dispose(); // Fermer la fenêtre
                 }
             });
-            gridPanel.add(button);
-            button.setPreferredSize(new Dimension(200, 250));
+            button.setPreferredSize(new Dimension(200, 200));
         }
 
 
@@ -160,7 +178,11 @@ public class InterAppareils extends JFrame {
         validate();
     }
 
-    public InterAppareils(String title) {
+    public InterAppareils(String title, Piece piece, Maison maison, Client client) {
+        this.client=client;
+        this.maison=maison;
+        this.piece=piece;
+        lesAppareils=new LesAppareils(piece.getCode());
         setTitle(title);
         this.Window();
         setVisible(true);

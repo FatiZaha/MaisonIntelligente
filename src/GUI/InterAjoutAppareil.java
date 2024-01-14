@@ -1,13 +1,26 @@
 package GUI;
 
+import DAO.LesAppareils;
+import DAO.LesThemes;
+import metier.*;
+
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.plaf.basic.BasicBorders;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class InterAjoutAppareil extends JFrame {
 
+    Piece piece;
+    Maison maison;
+    Client client;
+    Appareil appareil = new Appareil();
+    LesAppareils lesAppareils;
+    LesThemes lesThemes = new LesThemes();
     public JTextField searchField;
 
     public JTextField nameField;
@@ -47,10 +60,31 @@ public class InterAjoutAppareil extends JFrame {
         JPanel gridPanel = new JPanel(new GridLayout(0, 4, 10, 10)); // 3 columns, 10 pixels horizontal and vertical gap
 
         // Create and add elements to the grid
-        for (int i = 1; i <= 18; i++) {
-            JButton button = new JButton("Button " + i);
+        for (theme th: lesThemes.theme_appareil)  {
+            JButton button = new JButton();
+            button.setSize(50,150);
+            ImageIcon imageIcon = new ImageIcon(th.image); // Replace with the actual path to your image
+
+            System.out.println(th.image);
+            Image image = imageIcon.getImage();
+            Image scaledImage = image.getScaledInstance(button.getWidth(), button.getHeight(), Image.SCALE_SMOOTH);
+            ImageIcon scaledImageIcon = new ImageIcon(scaledImage);
+            button.setIcon(scaledImageIcon);
             gridPanel.add(button);
-            button.setPreferredSize(new Dimension(50, 150));
+            button.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    appareil.theme.id=th.id;
+                    appareil.theme.image=th.image;
+                    Border customBorder = new LineBorder(Color.RED, 2); // Replace with your desired color and thickness
+
+                    // Set the custom border on the button
+                    button.setBorder(customBorder);
+
+
+                }
+            });
+            //
         }
 
 
@@ -102,7 +136,7 @@ public class InterAjoutAppareil extends JFrame {
         annulerBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                InterAppareils appareils = new InterAppareils("Appareils");
+                //InterAppareils appareils = new InterAppareils("Appareils");
 
                 // Actions à effectuer lorsque le bouton est cliqué
                 dispose(); // Fermer la fenêtre
@@ -119,10 +153,18 @@ public class InterAjoutAppareil extends JFrame {
         ajouterBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                InterAppareils appareils = new InterAppareils("Appareils");
+                if (nameField.getText() !=null) {
+                    appareil.setIdPiece(piece.getCode());
+                    appareil.setEtat(false);
+                    appareil.setNom(nameField.getText());
+                    if(lesAppareils.Ajouter_appareil(appareil)){
+                    InterAppareils appareils = new InterAppareils("Appareils", piece, maison, client);
 
-                // Actions à effectuer lorsque le bouton est cliqué
-                dispose(); // Fermer la fenêtre
+                    // Actions à effectuer lorsque le bouton est cliqué
+                    dispose(); // Fermer la fenêtre
+                    }else JOptionPane.showMessageDialog(null, "Ce nom existe déjàt, inserer autre nom !!");
+
+                }else JOptionPane.showMessageDialog(null, "champ du nom vide !!");
             }
         });
 
@@ -150,7 +192,11 @@ public class InterAjoutAppareil extends JFrame {
         validate();
     }
 
-    public InterAjoutAppareil(String title){
+    public InterAjoutAppareil(String title,Piece piece,Maison maison,Client client){
+        this.maison=maison;
+        this.piece=piece;
+        this.client=client;
+        lesAppareils=new LesAppareils(piece.getCode());
         setTitle(title);
         this.Window();
         setVisible(true);

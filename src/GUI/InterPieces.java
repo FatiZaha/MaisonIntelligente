@@ -1,7 +1,9 @@
 package GUI;
 
+import DAO.LesPieces;
 import metier.Client;
 import metier.Maison;
+import metier.Piece;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -14,6 +16,7 @@ public class InterPieces extends JFrame {
 
     Client client;
     Maison maison;
+    LesPieces lesPieces ;
     private JTextField searchField;
     public void NavFilter(JPanel navFilter, GridBagConstraints c) {
 
@@ -113,23 +116,31 @@ public class InterPieces extends JFrame {
         c.gridy = 2;
 
         content.setLayout(new BorderLayout());
-        content.setBorder(new EmptyBorder(0, 200, 0, 200));
+        content.setBorder(new EmptyBorder(10, 200, 0, 200));
 
         JPanel gridPanel = new JPanel(new GridLayout(0, 3, 50, 30)); // 3 columns, 10 pixels horizontal and vertical gap
 
         // Create and add elements to the grid
-        for (int i = 1; i <= 18; i++) {
-            JButton button = new JButton("Piece " + i);
+        for (Piece piece: lesPieces.p)  {
+            JButton button = new JButton(piece.getNom());
+            button.setSize(500,500);
+            ImageIcon imageIcon = new ImageIcon(piece.theme.image); // Replace with the actual path to your image
+
+            System.out.println(piece.theme.image);
+            Image image = imageIcon.getImage();
+            Image scaledImage = image.getScaledInstance(button.getWidth(), button.getHeight(), Image.SCALE_SMOOTH);
+            ImageIcon scaledImageIcon = new ImageIcon(scaledImage);
+            button.setIcon(scaledImageIcon);
+            gridPanel.add(button);
             button.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    InterAppareils appareil = new InterAppareils("Appareil");
+                    InterAppareils appareils = new InterAppareils(piece.getNom(),piece,maison,client);
 
                     // Actions à effectuer lorsque le bouton est cliqué
                     dispose(); // Fermer la fenêtre
                 }
             });
-            gridPanel.add(button);
             button.setPreferredSize(new Dimension(200, 250));
         }
 
@@ -169,6 +180,7 @@ public class InterPieces extends JFrame {
     public InterPieces(String title, Maison maison, Client client) {
         this.client=client;
         this.maison=maison;
+        lesPieces=new LesPieces(maison.getIdMaison());
         setTitle(title);
         this.Window(title);
         setVisible(true);

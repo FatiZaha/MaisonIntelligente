@@ -33,6 +33,7 @@ public class LesAppareils {
 				appareil.setNom(resultSet.getString("nom"));
 				appareil.theme.id=resultSet.getInt("id");
 				appareil.theme.image=resultSet.getString("image");
+				appareil.setEtat(resultSet.getBoolean("etat"));
 				appareil.setIdPiece(resultSet.getInt("code"));
 				this.a.add(appareil);
 				// Traitez les données récupérées selon vos besoins
@@ -47,7 +48,7 @@ public class LesAppareils {
 
 
 	public boolean Ajouter_appareil(Appareil appareil) {
-		if (this.a.stream().anyMatch(e -> e.getNom().equals(appareil.getNom()) && e.getIdPiece()==appareil.getIdPiece())) return false;
+		if (this.a.stream().anyMatch(e -> e.getNom().equals(appareil.getNom()))) return false;
 
 		String appareils = "insert into appareil (nom,etat,code,theme) values (?,?,?,?);";
 
@@ -106,16 +107,35 @@ public class LesAppareils {
 
 	public void Modifier_appareil(Appareil appareil) {
 
-		String appareils = "UPDATE appareil SET nom = ?, theme = ?, etat=? WHERE id = ?";
+		String appareils = "UPDATE appareil SET nom = ? WHERE (id = ?)";
 
 		PreparedStatement statement = null;
 
 		try {
 			statement = dm.conx.prepareStatement(appareils);
 			statement.setString(1,appareil.getNom());
-			statement.setInt(2,appareil.theme.id);
-			statement.setBoolean(3,appareil.isEtat());
-			statement.setInt(4, appareil.getId());
+			statement.setInt(2, appareil.getId());
+			int resultSet = statement.executeUpdate();
+			GetAppareils(appareil.getIdPiece());
+
+
+			//conx.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		}
+	}
+	public void changeEtat_appareil(Appareil appareil) {
+
+		String appareils;
+		if (appareil.isEtat()) appareils = "UPDATE appareil SET etat=0 WHERE id = ?";
+		else appareils = "UPDATE appareil SET etat=1 WHERE id = ?";
+
+		PreparedStatement statement = null;
+
+		try {
+			statement = dm.conx.prepareStatement(appareils);
+			statement.setInt(1, appareil.getId());
 			int resultSet = statement.executeUpdate();
 			GetAppareils(appareil.getIdPiece());
 

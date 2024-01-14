@@ -99,13 +99,13 @@ public class InterMaisons extends JFrame {
                 button.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        InterPieces pieces = new InterPieces("Pieces",maison,client);
+                        InterPieces pieces = new InterPieces(maison.getNom(),maison,client);
 
                         // Actions à effectuer lorsque le bouton est cliqué
                         dispose(); // Fermer la fenêtre
                     }
                 });
-                button.setPreferredSize(new Dimension(200, 250));
+                button.setPreferredSize(new Dimension(200, 200));
             }
 
 

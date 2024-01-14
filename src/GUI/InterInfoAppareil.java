@@ -1,5 +1,11 @@
 package GUI;
 
+import DAO.LesAppareils;
+import metier.Appareil;
+import metier.Client;
+import metier.Maison;
+import metier.Piece;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -7,6 +13,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class InterInfoAppareil extends JFrame {
+
+    Client client;
+    Maison maison;
+    Piece piece;
+    Appareil appareil;
+    LesAppareils lesAppareils;
 
     public void NavBar(JPanel navBar, GridBagConstraints c){
 
@@ -35,7 +47,7 @@ public class InterInfoAppareil extends JFrame {
         returnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                InterAppareils appareils = new InterAppareils("Appareils");
+                InterAppareils appareils = new InterAppareils("Appareils",piece,maison,client);
 
                 // Actions à effectuer lorsque le bouton est cliqué
                 dispose(); // Fermer la fenêtre
@@ -57,7 +69,8 @@ public class InterInfoAppareil extends JFrame {
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                InterAppareils appareils = new InterAppareils("Appareils");
+                lesAppareils.Supprimer_appareil(appareil);
+                InterAppareils appareils = new InterAppareils("Appareils",piece,maison,client);
 
                 // Actions à effectuer lorsque le bouton est cliqué
                 dispose(); // Fermer la fenêtre
@@ -80,6 +93,18 @@ public class InterInfoAppareil extends JFrame {
         // add the button etat
         JButton etat =new JButton();
         etat.setPreferredSize(new Dimension(400, 300));
+        System.out.println(appareil.isEtat());
+        if (appareil.isEtat())etat.setBackground(Color.green);
+        else etat.setBackground(Color.red);
+        etat.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                appareil.setEtat(!appareil.isEtat());
+                lesAppareils.changeEtat_appareil(appareil);
+                if (appareil.isEtat()) etat.setBackground(Color.green);
+                else etat.setBackground(Color.red);
+            }
+        });
         content.add(etat);
 // section de modification de nom appareil
 
@@ -104,9 +129,10 @@ public class InterInfoAppareil extends JFrame {
         Label oldNameLabel = new Label("ancien nom");
         oldNameLabel.setFont(new Font("Arial", Font.PLAIN, 24));
 
-        JTextField oldNameField = new JTextField();
+        JTextField oldNameField = new JTextField(appareil.getNom());
         oldNameField.setPreferredSize(new Dimension(500, 35));
         oldNameField.setFont(new Font("Arial", Font.PLAIN, 24));
+        oldNameField.setEditable(false);
 
         info.add(oldNameLabel,FlowLayout.LEFT);
         info.add(oldNameField,FlowLayout.CENTER);
@@ -132,7 +158,14 @@ public class InterInfoAppareil extends JFrame {
         validerBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                InterAppareils appareils = new InterAppareils("Appareils");
+                if(newNameField.getText() == null){
+                InterAppareils appareils = new InterAppareils(piece.getNom(),piece,maison,client);
+                }
+                else {
+                    appareil.setNom(newNameField.getText());
+                    lesAppareils.Modifier_appareil(appareil);
+                    InterAppareils appareils = new InterAppareils(piece.getNom(),piece,maison,client);
+                }
 
                 // Actions à effectuer lorsque le bouton est cliqué
                 dispose(); // Fermer la fenêtre
@@ -148,14 +181,14 @@ public class InterInfoAppareil extends JFrame {
 
         getContentPane().add(content, c);
     }
-    public void Window(){
+    public void Window(String title){
 
         GridBagLayout grid = new GridBagLayout();
         setLayout(grid);
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.BOTH;
 
-        JPanel header= InterHeader.createHeaderPanel("Appareil",c);
+        JPanel header= InterHeader.createHeaderPanel(title,c);
         getContentPane().add(header,c);
         JPanel navBar= new JPanel();
         JPanel content= new JPanel();
@@ -167,9 +200,14 @@ public class InterInfoAppareil extends JFrame {
         validate();
 
     }
-    public InterInfoAppareil(String title){
+    public InterInfoAppareil(String title, Appareil appareil, Piece piece, Maison maison, Client client){
+        this.maison=maison;
+        this.piece=piece;
+        this.appareil=appareil;
+        this.client=client;
+        lesAppareils =new LesAppareils(piece.getCode());
         setTitle(title);
-        this.Window();
+        this.Window(title);
         setVisible(true);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setResizable(false);
