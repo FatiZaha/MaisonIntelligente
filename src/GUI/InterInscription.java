@@ -1,4 +1,7 @@
 package GUI;
+import DAO.LesClients;
+import metier.Client;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,34 +20,9 @@ public class InterInscription extends JFrame {
     JPasswordField chpasswordField;
     JButton creerBtn;
     JButton AnnulerBtn;
-       /* public void Header(JPanel header, GridBagConstraints c) {
 
-            c.fill = GridBagConstraints.BOTH;
-            c.weightx = 0.05;
-            c.weighty = 0.002;
-            c.gridy = 0;
-            String imagePath = "..\\MaisonIntelligente\\src\\GUI\\images\\logo2.png";
-            int desiredWidth = 151;
-            int desiredHeight = 65;
+    LesClients lesClients = new LesClients();
 
-
-            ImageIcon img = new ImageIcon(imagePath);
-            Image image = img.getImage().getScaledInstance(desiredWidth, desiredHeight, Image.SCALE_SMOOTH);
-            ImageIcon scaledImg = new ImageIcon(image);
-
-            FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
-            header.setLayout(flowLayout);
-            header.setBorder(new EmptyBorder(5, 0, 5, 0));
-            JLabel logo = new JLabel(scaledImg);
-            header.add(logo);
-            JLabel pagename= new JLabel("S'inscrire");
-            pagename.setFont(new Font("Arial", Font.BOLD, 25));
-            pagename.setBorder(new EmptyBorder(0, 50, 0, 0));
-            header.add(pagename);
-
-            header.setBackground(Color.decode("#EFFA76"));
-            getContentPane().add(header,c);
-        }*/
         public void Content(JPanel content, GridBagConstraints c) {
 
             c.weighty = 2;
@@ -138,7 +116,31 @@ public class InterInscription extends JFrame {
             creerBtn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    Abonnement abonnement = new Abonnement("Abonnement");
+                    if(nomField.getText() == null || prenomField.getText() == null || telField.getText() == null
+                    || emailField.getText() == null || loginField.getText()==null || adresseField.getText()==null
+                    || passwordField.getText()==null || chpasswordField.getText() == null){
+                        JOptionPane.showMessageDialog(null, "Veuiller remplir tous les champs !!");
+                    }
+                    else if (!passwordField.getText().equals(chpasswordField.getText())){
+                        JOptionPane.showMessageDialog(null, "le check password doit être le même que password !!");
+                    }
+                    else {
+                        Client client = new Client();
+                        client.setNom(nomField.getText());
+                        client.setPrenom(prenomField.getText());
+                        client.setTel(telField.getText());
+                        client.setAdresse(adresseField.getText());
+                        client.setEmail(emailField.getText());
+                        client.setNom_utilisateur(loginField.getText());
+                        client.setMot_de_passe(passwordField.getText());
+                        if(lesClients.Inscription(client))
+                        {
+                            Abonnement abonnement = new Abonnement("Abonnement",lesClients.Connexion(client.getNom_utilisateur(),client.getMot_de_passe()));
+                        }
+                        else {
+                            JOptionPane.showMessageDialog(null, "le client existe déjà !!");
+                        }
+                    }
 
                     // Actions à effectuer lorsque le bouton est cliqué
                     dispose(); // Fermer la fenêtre
@@ -158,36 +160,36 @@ public class InterInscription extends JFrame {
             footer.add(creerBtn);
         }
 
-            public void Window(){
+        public void Window(){
 
-                GridBagLayout grid = new GridBagLayout();
-                setLayout(grid);
+            GridBagLayout grid = new GridBagLayout();
+            setLayout(grid);
 
-                //JPanel header= new JPanel();;
-                JPanel content= new JPanel();
-                JPanel footer= new JPanel();
+            //JPanel header= new JPanel();;
+            JPanel content= new JPanel();
+            JPanel footer= new JPanel();
 
-                GridBagConstraints c = new GridBagConstraints();
-                c.fill =GridBagConstraints.BOTH;
-                JPanel header= InterHeader.createHeaderPanel("S'inscrire",c);
-                getContentPane().add(header,c);
-                //this.Header(header,c);
-                this.Content(content,c);
-                this.Footer(footer,c);
-                //pack();
-                validate();
-            }
+            GridBagConstraints c = new GridBagConstraints();
+            c.fill =GridBagConstraints.BOTH;
+            JPanel header= InterHeader.createHeaderPanel("S'inscrire",c);
+            getContentPane().add(header,c);
+            //this.Header(header,c);
+            this.Content(content,c);
+            this.Footer(footer,c);
+            //pack();
+            validate();
+        }
 
-            public InterInscription(String title) {
-                setTitle(title);
-                this.Window();
-                setVisible(true);
-                setExtendedState(JFrame.MAXIMIZED_BOTH);
-                setResizable(false);
-                setLocationRelativeTo(null);
-                String imagePath = "..\\MaisonIntelligente\\src\\GUI\\images\\logo2.png";
-                ImageIcon icon = new ImageIcon(imagePath);
-                setIconImage(icon.getImage());
-            }
-            }
+        public InterInscription(String title) {
+            setTitle(title);
+            this.Window();
+            setVisible(true);
+            setExtendedState(JFrame.MAXIMIZED_BOTH);
+            setResizable(false);
+            setLocationRelativeTo(null);
+            String imagePath = "..\\MaisonIntelligente\\src\\GUI\\images\\logo2.png";
+            ImageIcon icon = new ImageIcon(imagePath);
+            setIconImage(icon.getImage());
+        }
+}
 

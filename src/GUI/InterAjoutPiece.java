@@ -1,5 +1,8 @@
 package GUI;
 
+import metier.Client;
+import metier.Maison;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -8,9 +11,11 @@ import java.awt.event.ActionListener;
 
 public class InterAjoutPiece extends JFrame {
 
-    public JTextField searchField;
+
 
     public JTextField nameField;
+    Client client;
+    Maison maison;
 
     public JPanel InsertionInfoMaison(){
         JPanel content =new JPanel(new GridLayout(2,1,0,40));
@@ -105,7 +110,7 @@ public class InterAjoutPiece extends JFrame {
         ajouterBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                InterPieces pieces = new InterPieces("Pieces");
+                InterPieces pieces = new InterPieces("Pieces", maison, client);
 
                 // Actions à effectuer lorsque le bouton est cliqué
                 dispose(); // Fermer la fenêtre
@@ -116,7 +121,7 @@ public class InterAjoutPiece extends JFrame {
         annulerBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                InterPieces pieces = new InterPieces("Pieces");
+                InterPieces pieces = new InterPieces("Pieces", maison, client);
 
                 // Actions à effectuer lorsque le bouton est cliqué
                 dispose(); // Fermer la fenêtre
@@ -146,7 +151,9 @@ public class InterAjoutPiece extends JFrame {
         validate();
     }
 
-    public InterAjoutPiece(String title){
+    public InterAjoutPiece(String title,Client client,Maison maison){
+        this.client=client;
+        this.maison=maison;
         setTitle(title);
         this.Window();
         setVisible(true);

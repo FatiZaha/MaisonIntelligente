@@ -12,32 +12,61 @@ public class Abonnement {
 	private Date Date_debut;
 	private Date Date_fin;
 	private Type Type_abonnement;
-	private boolean Etat;
 	
-	
+	private int idClient;
 
-    public Abonnement(float Prix,Date date_d, Date date_f, Type t, boolean Etat) {
-    	this.Prix=Prix;
-    	this.Date_debut=date_d;
-    	this.Date_fin=date_f;
-    	this.Type_abonnement=t;
-    	this.Etat=Etat;
+    public Abonnement() {
+
     }
 
-   
-   
-    public void Payer(boolean etat) throws PaiementException {
-       Etat=true;
-	   System.out.println("L'abonnement a été payé avec succès.");
-    }
 
-    public void Afficher_abonnement()throws AbonnementException {
-		System.out.println("Numéro d'abonnement : " + Numero);
-		System.out.println("Prix : " + Prix);
-		System.out.println("Date de début : " + Date_debut);
-		System.out.println("Date de fin : " + Date_fin);
-		System.out.println("Type d'abonnement : " + Type_abonnement);
-		System.out.println("État : " + (Etat ? "Payé" : "Non payé"));
-    }
+	public int getNumero() {
+		return Numero;
+	}
 
+	public void setNumero(int numero) {
+		Numero = numero;
+	}
+
+	public float getPrix() {
+		return Prix;
+	}
+
+	public void setPrix(float prix) {
+		Prix = prix;
+	}
+
+	public Date getDate_debut() {
+		return Date_debut;
+	}
+
+	public void setDate_debut(Date date_debut) {
+		Date_debut = date_debut;
+	}
+
+	public Date getDate_fin() {
+		return Date_fin;
+	}
+
+	public void setDate_fin(Date date_fin) {
+		Date_fin = date_fin;
+	}
+
+	public Type getType_abonnement() {
+		return Type_abonnement;
+	}
+
+	public void setType_abonnement(Type type_abonnement) {
+		Type_abonnement = type_abonnement;
+	}
+
+
+
+	public int getIdClient() {
+		return idClient;
+	}
+
+	public void setIdClient(int idClient) {
+		this.idClient = idClient;
+	}
 }

@@ -8,12 +8,20 @@ public class Piece {
 	 private int Code;
 	 private String Nom;
 
+	public theme theme;
+	private int idMaison;
    
-    public Piece(String nom) {
-		
-		Nom = nom;
+    public Piece() {
+		theme=new theme();
 	}
 
+	public int getCode() {
+		return Code;
+	}
+
+	public void setCode(int code) {
+		Code = code;
+	}
 
 	public String getNom() {
 		return Nom;
@@ -25,6 +33,13 @@ public class Piece {
 		Nom = nom;
 	}
 
+	public int getIdMaison() {
+		return idMaison;
+	}
+
+	public void setIdMaison(int idMaison) {
+		this.idMaison = idMaison;
+	}
 
 	public String ToString() {
         

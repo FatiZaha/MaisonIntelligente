@@ -1,5 +1,8 @@
 package GUI;
 
+import metier.Client;
+import metier.Maison;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -8,6 +11,9 @@ import java.awt.event.ActionListener;
 
 
 public class InterPieces extends JFrame {
+
+    Client client;
+    Maison maison;
     private JTextField searchField;
     public void NavFilter(JPanel navFilter, GridBagConstraints c) {
 
@@ -60,7 +66,7 @@ public class InterPieces extends JFrame {
         addDeviceButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                InterAjoutPiece piece = new InterAjoutPiece("Ajouter Piece");
+                InterAjoutPiece piece = new InterAjoutPiece("Ajouter Piece",client,maison);
 
                 // Actions à effectuer lorsque le bouton est cliqué
                 dispose(); // Fermer la fenêtre
@@ -86,7 +92,7 @@ public class InterPieces extends JFrame {
         backIconButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                InterMaisons maisons = new InterMaisons("Maisons");
+                InterMaisons maisons = new InterMaisons("Maisons",client);
 
                 // Actions à effectuer lorsque le bouton est cliqué
                 dispose(); // Fermer la fenêtre
@@ -160,7 +166,9 @@ public class InterPieces extends JFrame {
         validate();
     }
 
-    public InterPieces(String title) {
+    public InterPieces(String title, Maison maison, Client client) {
+        this.client=client;
+        this.maison=maison;
         setTitle(title);
         this.Window(title);
         setVisible(true);

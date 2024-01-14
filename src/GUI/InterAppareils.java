@@ -86,7 +86,7 @@ public class InterAppareils extends JFrame {
         backIconButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                InterPieces pieces = new InterPieces("Pieces");
+                //InterPieces pieces = new InterPieces("Pieces", maison, client);
 
                 // Actions à effectuer lorsque le bouton est cliqué
                 dispose(); // Fermer la fenêtre

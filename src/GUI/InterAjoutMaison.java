@@ -1,5 +1,7 @@
 package GUI;
 
+import metier.Client;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -10,6 +12,7 @@ public class InterAjoutMaison extends JFrame {
 
     public JTextField searchField;
 
+    Client client;
     public JTextField nameField;
 
     public JPanel InsertionInfoMaison(){
@@ -102,7 +105,7 @@ public class InterAjoutMaison extends JFrame {
         annulerBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                InterMaisons maisons = new InterMaisons("Maisons");
+                InterMaisons maisons = new InterMaisons("Maisons",client);
 
                 // Actions à effectuer lorsque le bouton est cliqué
                 dispose(); // Fermer la fenêtre
@@ -119,7 +122,7 @@ public class InterAjoutMaison extends JFrame {
         ajouterBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                InterMaisons maisons = new InterMaisons("Maisons");
+                InterMaisons maisons = new InterMaisons("Maisons",client);
 
                 // Actions à effectuer lorsque le bouton est cliqué
                 dispose(); // Fermer la fenêtre
@@ -150,9 +153,10 @@ public class InterAjoutMaison extends JFrame {
         validate();
     }
 
-    public InterAjoutMaison(String title){
+    public InterAjoutMaison(String title, Client client){
         setTitle(title);
         this.Window();
+        this.client=client;
         setVisible(true);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setResizable(false);

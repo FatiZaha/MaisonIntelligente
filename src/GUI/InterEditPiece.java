@@ -102,7 +102,7 @@ public class InterEditPiece extends JFrame {
         annulerBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                InterMaisons maisons = new InterMaisons("Maison");
+                //InterPieces pieces = new InterPieces("Piece", maison, client);
 
                 // Actions à effectuer lorsque le bouton est cliqué
                 dispose(); // Fermer la fenêtre
@@ -115,7 +115,7 @@ public class InterEditPiece extends JFrame {
         ajouterBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                InterMaisons maisons = new InterMaisons("Maison");
+                //InterPieces pieces = new InterPieces("Piece", maison, client);
 
                 // Actions à effectuer lorsque le bouton est cliqué
                 dispose(); // Fermer la fenêtre

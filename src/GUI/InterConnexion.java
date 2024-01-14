@@ -1,5 +1,8 @@
 package GUI;
 import DAO.*;
+//import metier.Abonnement;
+import com.mysql.cj.protocol.Message;
+import metier.Client;
 import java.awt.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.*;
@@ -13,36 +16,10 @@ public class InterConnexion extends JFrame {
     JButton connectBtn;
     JButton inscptionBtn;
 
+    LesClients lesClients = new LesClients();
+    LesAbonnements lesAbonnements;
 
 
-    /*public void Header(JPanel header, GridBagConstraints c){
-
-        c.weightx = 0.05;
-        c.weighty = 0.002;
-        c.gridy = 0;
-        String imagePath = "..\\MaisonIntelligente\\src\\GUI\\images\\logo2.png";
-        int desiredWidth = 151;
-        int desiredHeight = 65;
-
-
-        ImageIcon img = new ImageIcon(imagePath);
-        Image image = img.getImage().getScaledInstance(desiredWidth, desiredHeight, Image.SCALE_SMOOTH);
-        ImageIcon scaledImg = new ImageIcon(image);
-
-        FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
-        header.setLayout(flowLayout);
-        header.setBorder(new EmptyBorder(5, 0, 5, 0));
-        JLabel logo = new JLabel(scaledImg);
-        header.add(logo);
-        JLabel pagename= new JLabel("Se Connecter");
-        pagename.setFont(new Font("Arial", Font.BOLD, 36));
-        pagename.setForeground(Color.decode("#4A4A49"));
-        pagename.setBorder(new EmptyBorder(0, 50, 0, 0));
-        header.add(pagename);
-
-        header.setBackground(Color.decode("#EFFA76"));
-        getContentPane().add(header,c);
-    }*/
     public void Content(JPanel content, GridBagConstraints c){
 
         c.weighty = 0.1;
@@ -114,10 +91,25 @@ public class InterConnexion extends JFrame {
         connectBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                InterMaisons maison = new InterMaisons("Les Maisons");
+
+                if(lesClients.Connexion(loginField.getText(),passwordField.getText()) != null){
+
+                    Client client = lesClients.Connexion(loginField.getText(),passwordField.getText());
+                    lesAbonnements = new LesAbonnements(client.getId());
+                    if (lesAbonnements != null && !lesAbonnements.testAbonnement()) {
+                        InterMaisons maison = new InterMaisons("Les Maisons",client);
+                        dispose();}
+                    else {
+
+                        Abonnement abonnement = new Abonnement("Abonnement",client);
+                        dispose();}
+                }
+                else JOptionPane.showMessageDialog(null, "Login ou mot de passe incorrect !!");
+
+
 
                 // Actions à effectuer lorsque le bouton est cliqué
-                dispose(); // Fermer la fenêtre
+                 // Fermer la fenêtre
             }
         });
 

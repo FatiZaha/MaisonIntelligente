@@ -1,5 +1,9 @@
 package GUI;
 
+import DAO.LesMaisons;
+import metier.Client;
+import metier.Maison;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -9,6 +13,8 @@ import java.awt.event.ActionListener;
 public class InterMaisons extends JFrame {
 
     private JTextField searchField;
+    Client client;
+    LesMaisons lesMaisons ;
 
     public void NavFilter(JPanel navFilter, GridBagConstraints c){
 
@@ -43,7 +49,7 @@ public class InterMaisons extends JFrame {
         addHomeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                InterAjoutMaison editPiece = new InterAjoutMaison("Ajouter Maison");
+                InterAjoutMaison ajouterMaison = new InterAjoutMaison("Ajouter Maison",client);
 
                 // Actions à effectuer lorsque le bouton est cliqué
                 dispose(); // Fermer la fenêtre
@@ -77,14 +83,23 @@ public class InterMaisons extends JFrame {
 
             JPanel gridPanel = new JPanel(new GridLayout(0, 3, 50, 30)); // 3 columns, 10 pixels horizontal and vertical gap
 
+            lesMaisons = new LesMaisons(client.getId());
             // Create and add elements to the grid
-            for (int i = 1; i <= 18; i++) {
-                JButton button = new JButton("Maison " + i);
+        for (Maison maison: lesMaisons.m)  {
+                JButton button = new JButton(maison.getNom());
+                button.setSize(500,500);
+            ImageIcon imageIcon = new ImageIcon(maison.theme.image); // Replace with the actual path to your image
+
+            System.out.println(maison.theme.image);
+            Image image = imageIcon.getImage();
+            Image scaledImage = image.getScaledInstance(button.getWidth(), button.getHeight(), Image.SCALE_SMOOTH);
+            ImageIcon scaledImageIcon = new ImageIcon(scaledImage);
+            button.setIcon(scaledImageIcon);
                 gridPanel.add(button);
                 button.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        InterPieces pieces = new InterPieces("Pieces");
+                        InterPieces pieces = new InterPieces("Pieces",maison,client);
 
                         // Actions à effectuer lorsque le bouton est cliqué
                         dispose(); // Fermer la fenêtre
@@ -125,8 +140,9 @@ public class InterMaisons extends JFrame {
         validate();
     }
 
-    public InterMaisons(String title){
+    public InterMaisons(String title, Client client){
         setTitle(title);
+        this.client=client;
         this.Window();
         setVisible(true);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
