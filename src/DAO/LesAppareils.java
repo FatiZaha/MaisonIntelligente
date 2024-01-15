@@ -128,8 +128,8 @@ public class LesAppareils {
 	public void changeEtat_appareil(Appareil appareil) {
 
 		String appareils;
-		if (appareil.isEtat()) appareils = "UPDATE appareil SET etat=0 WHERE id = ?";
-		else appareils = "UPDATE appareil SET etat=1 WHERE id = ?";
+		if (appareil.isEtat()) appareils = "UPDATE appareil SET etat=1 WHERE id = ?";
+		else appareils = "UPDATE appareil SET etat=0 WHERE id = ?";
 
 		PreparedStatement statement = null;
 

@@ -136,7 +136,7 @@ public class InterAjoutAppareil extends JFrame {
         annulerBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //InterAppareils appareils = new InterAppareils("Appareils");
+                InterAppareils appareils = new InterAppareils("Appareils",piece,maison,client);
 
                 // Actions à effectuer lorsque le bouton est cliqué
                 dispose(); // Fermer la fenêtre

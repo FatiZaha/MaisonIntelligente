@@ -22,7 +22,7 @@ public class InterMaisons extends JFrame {
         //c.weightx = 20;
         c.gridy = 1;
 
-        navFilter.setBorder(new EmptyBorder(40,0,0,-200));
+        navFilter.setBorder(new EmptyBorder(40,0,0,50));
         navFilter.setLayout(new FlowLayout());
         navFilter.setPreferredSize(new Dimension(1000, 80));
         //navFilter.setBackground(Color.LIGHT_GRAY);
@@ -56,20 +56,40 @@ public class InterMaisons extends JFrame {
             }
         });
         String imagePath2 = "..\\MaisonIntelligente\\src\\GUI\\images\\add_home.png";
-        int desiredWidth2 = 32;
-        int desiredHeight2 = 32;
+
 
         ImageIcon img2 = new ImageIcon(imagePath2);
-        Image image2 = img2.getImage().getScaledInstance(desiredWidth2, desiredHeight2, Image.SCALE_SMOOTH);
+        Image image2 = img2.getImage().getScaledInstance(desiredWidth, desiredHeight, Image.SCALE_SMOOTH);
         ImageIcon searchIcon2 = new ImageIcon(image2);
 
         addHomeButton.setIcon(searchIcon2);
         addHomeButton.setContentAreaFilled(false);
-        addHomeButton.setBorder(new EmptyBorder(0,170,0,0));
+        addHomeButton.setBorder(new EmptyBorder(0,70,0,0));
 
-        navFilter.add(searchField, FlowLayout.LEFT);
-        navFilter.add(searchButton, FlowLayout.CENTER);
-        navFilter.add(addHomeButton, FlowLayout.RIGHT);
+        String imagePath3 = "..\\MaisonIntelligente\\src\\GUI\\images\\back_icon.png";
+        JButton backBtn= new JButton();
+        ImageIcon img3 = new ImageIcon(imagePath3);
+        Image image3 = img3.getImage().getScaledInstance(desiredWidth, desiredHeight, Image.SCALE_SMOOTH);
+        ImageIcon searchIcon3 = new ImageIcon(image3);
+
+        backBtn.setIcon(searchIcon3);
+        backBtn.setContentAreaFilled(false);
+        backBtn.setBorder(new EmptyBorder(0,0,0,0));
+
+        backBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                InterConnexion connexion = new InterConnexion("Connexion");
+
+                // Actions à effectuer lorsque le bouton est cliqué
+                dispose(); // Fermer la fenêtre
+            }
+        });
+
+        navFilter.add(backBtn);
+        navFilter.add(searchField);
+        navFilter.add(searchButton);
+        navFilter.add(addHomeButton);
         getContentPane().add(navFilter,c);
     }
 
